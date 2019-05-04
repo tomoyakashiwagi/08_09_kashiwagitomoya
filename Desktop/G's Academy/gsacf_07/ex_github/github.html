@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>github.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="github%E3%82%92%E6%BA%96%E5%82%99%E3%81%97%EF%BC%8C%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E6%89%8B%E9%A0%86"><strong>githubを準備し，コードをアップするまでの手順</strong></h1>
+<p>作成日：2019/01/30</p>
+<h2 id="0%E7%9B%AE%E6%AC%A1"><strong>0.目次</strong></h2>
+<ul>
+<li>最初にやること</li>
+<li>プロダクトを登録するときにやること</li>
+<li>登録済みのプロダクトを更新したときにやること</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="1-%E6%9C%80%E5%88%9D%E3%81%AB%E3%82%84%E3%82%8B%E3%81%93%E3%81%A8"><strong>1. 最初にやること</strong></h2>
+<ul>
+<li>はじめてgithubに登録をしたとき．</li>
+<li>新しいPCでgithubにアクセスするとき．</li>
+</ul>
+<h3 id="11-%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B"><strong>1.1 ホームディレクトリに移動する</strong></h3>
+<p>ターミナルを起動するとホームディレクトリにいるはずだが一応下記を実行．</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> ~
+</div></code></pre>
+<h3 id="12-ssh-key%E3%81%AE%E7%99%BA%E8%A1%8C"><strong>1.2 ssh-keyの発行</strong></h3>
+<ul>
+<li>githubにアクセスするにはssh-keyが必要となる．</li>
+<li>ssh-keyは公開鍵と秘密鍵のペアになっており，「公開鍵をgithubに登録」「秘密鍵をPCのローカルに保存」することで通信時に組み合わせがあっているかどうか判断する．</li>
+<li>ターミナル(windowsはgit bash)を開いて以下のコマンドを入力する．</li>
+</ul>
+<pre class="hljs"><code><div>$ ssh-keygen
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Generating public/private rsa key pair.
+Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/home/vagrant/.ssh/id_rsa): 
+</div></code></pre>
+<p>上の後で<code>github_rsa</code>を入力してEnter．</p>
+<pre class="hljs"><code><div>Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase):
+</div></code></pre>
+<p>続き．とりあえず入力せずにEnter．</p>
+<pre class="hljs"><code><div>Enter same passphrase again:
+</div></code></pre>
+<p>続き．パスワード入力していないので再度そのままEnter．</p>
+<pre class="hljs"><code><div>Your identification has been saved <span class="hljs-keyword">in</span> github_rsa.
+Your public key has been saved <span class="hljs-keyword">in</span> github_rsa.pub.
+The key fingerprint is:
+6f:09:00:22:44:55:66:77:95:89:41:7d:a7:58:1b:92 vagrant@localhost.localdomain
+The key<span class="hljs-string">'s randomart image is:
++--[ RSA 2048]----+
+|   .o. .         |
+|     oEo+ .      |
+|    . +=+=       |
+|     o.+==       |
+|    . . S .      |
+|       - + .     |
+|      .   +      |
+|         .       |
+|                 |
++-----------------+
+</span></div></code></pre>
+<p>これでssh-keyを発行できた．発行した内容を確認する．下記のようになっていればOK．
+．</p>
+<pre class="hljs"><code><div>$ ls -la | grep github
+</div></code></pre>
+<p>実行結果．</p>
+<pre class="hljs"><code><div>-rw-------  1 vagrant vagrant 1675 11月 20 12:18 2014 github_rsa
+-rw-r--r--  1 vagrant vagrant  411 11月 20 12:18 2014 github_rsa.pub
+</div></code></pre>
+<h3 id="13-ssh-key%E3%81%AE%E9%85%8D%E7%BD%AE"><strong>1.3 ssh-keyの配置</strong></h3>
+<ul>
+<li>ssh-keyは適切な場所に配置しないと動かない．</li>
+<li>以下のコマンドで動作する場所に配置する．</li>
+</ul>
+<p>下記コマンドでフォルダの有無を確認する．</p>
+<pre class="hljs"><code><div>$ ls -a
+</div></code></pre>
+<p><strong><code>.ssh/</code>が存在しない場合のみ</strong>下記コマンドでホームディレクトリに<code>.ssh</code>を作成する．</p>
+<pre class="hljs"><code><div>$ mkdir -p ~/.ssh
+</div></code></pre>
+<p>ここから共通．続けて以下を実行する．上で作成したディレクトリに作成したキーペアを移動する．</p>
+<pre class="hljs"><code><div>$ mv github_rsa* ~/.ssh
+</div></code></pre>
+<p>エラーが出なければOK．引き続き，以下のコマンドでssh-keyを動作するようにする．</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">eval</span> $(ssh-agent)
+Agent pid 9899
+</div></code></pre>
+<p>作成したキーペアをssh-agentに登録する．</p>
+<pre class="hljs"><code><div>$ ssh-add ~/.ssh/github_rsa
+Identity added: /home/vagrant/.ssh/github_rsa
+</div></code></pre>
+<p>以上でssh-keyの準備は完了だが，設定ファイルに変更を加える必要がある．</p>
+<h3 id="14-%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF"><strong>1.4 設定ファイルの書き込み</strong></h3>
+<ul>
+<li>下記のコマンドで設定ファイルに書き込む．</li>
+<li>2行目の「vi ~….」ではターミナル内でエディタを起動する．画面が変わりますがパニックにならないよう注意！</li>
+<li>このエディタにはインサートモードとコマンドモードの2つがあり，最初はコマンドモードで表示されるが，追記を行うにはインサートモードに変更する必要がある．</li>
+<li>インサートモードにするには「i」キーを押す．画面のどこかに—INSERT—や—挿入—などの文字列が表示される．その状態で「Host github」からの5行を追記する．</li>
+<li>追記が終わったら「esc(コマンドモードに戻る)」→「:wq(保存して終了のコマンド)」→「enter(実行)」で元の画面に戻る．</li>
+<li>ミスったと感じたら「esc」→「:q!」→「enter」でエディタを終了できるので，もう一度「vi ~…..」を入力してやり直しましょう．</li>
+</ul>
+<p>ターミナルで以下を1行ずつ実行．</p>
+<pre class="hljs"><code><div>$ touch ~/.ssh/config
+$ vi ~/.ssh/config
+</div></code></pre>
+<p><code>.ssh/config</code>ファイルを開くと空なので以下を追記する．</p>
+<pre class="hljs"><code><div><span class="hljs-addition">+ Host github</span>
+<span class="hljs-addition">+ 	HostName github.com</span>
+<span class="hljs-addition">+ 	Identityfile ~/.ssh/github_rsa</span>
+<span class="hljs-addition">+ 	Port 22</span>
+<span class="hljs-addition">+ 	User git  </span>
+</div></code></pre>
+<p>続いて，設定ファイルの権限を変更する．ターミナルで以下を実行．</p>
+<pre class="hljs"><code><div>$ chmod 700 ~/.ssh/config
+</div></code></pre>
+<p>エラーが出なければOK．</p>
+<h3 id="15-github%E3%81%B8%E3%81%AEssh-key%E7%99%BB%E9%8C%B2"><strong>1.5 githubへのssh-key登録</strong></h3>
+<p>githubのサイトにアクセスし，「設定」→「SSH keys」へ進む．「Add SSH key」をクリックして入力画面へ進む．</p>
+<p>ターミナルで下記のコマンドを入力し，ssh-keyを表示させる．</p>
+<pre class="hljs"><code><div>$ cat ~/.ssh/github_rsa.pub
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>ssh-rsa ...
+...
+...
+...
+...
+... localhost@0-mac
+</div></code></pre>
+<p>上のように文字列が表示されたら，「ssh-rsa」から全てコピーし，githubサイトの入力欄に貼り付ける．タイトルはPC名など適当につけてOK．
+入力したら「Add key」をクリックして終了．</p>
+<h3 id="16-%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A"><strong>1.6 初期設定</strong></h3>
+<p>githubのユーザ名とメールアドレスを登録する．ターミナルで下記コマンドを入力し，エンターを押す．
+(それぞれ自身のアカウントのものを入力する)</p>
+<pre class="hljs"><code><div>$ git config --global user.name <span class="hljs-string">"taroosg"</span>
+$ git config --global user.email <span class="hljs-string">"taro.osg@gsmail.com"</span>
+</div></code></pre>
+<p>続いて以下を入力して内容を確認する．</p>
+<pre class="hljs"><code><div>$ git config -l
+user.name=TaroOhsugi
+user.email=taro.Ohsugi@gsmail.com
+</div></code></pre>
+<p>上で入力した内容に間違いなければOK．エラーが出る場合は1.8参照．</p>
+<h3 id="17-github%E3%81%A8%E3%81%AE%E6%8E%A5%E7%B6%9A%E3%83%86%E3%82%B9%E3%83%88%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB"><strong>1.7 githubとの接続テスト(ターミナル)</strong></h3>
+<p>ターミナルで書きを実行</p>
+<pre class="hljs"><code><div>$ ssh -i ~/.ssh/github_rsa git@github.com
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Hi username! You<span class="hljs-string">'ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</span></div></code></pre>
+<p>上記のように表示されればOK．</p>
+<h3 id="18-%E3%80%8Cxcrun-error%E3%80%8D%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88mac%E3%81%AE%E3%81%BF"><strong>1.8 「xcrun: error」が発生する場合(macのみ)</strong></h3>
+<p>この場合，gitコマンドを実行する「<code>Command Line Tools(macOS High Sierra version 10.13) for XCode</code>」がインストールされていないことが原因．<br>
+ウインドウが出てきたら指示に従ってインストールし，完了後に再度コマンドを実行すればOK．
+ウインドウが出てこない場合は以下のコマンドを実行すればインストールできる．</p>
+<pre class="hljs"><code><div>$ xcode-select --install
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="2-%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E3%82%84%E3%82%8B%E3%81%93%E3%81%A8"><strong>2. プロダクトを登録するときにやること</strong></h2>
+<ul>
+<li>githubにアップしていない新しいプロダクトを作成したとき．</li>
+</ul>
+<h3 id="21-%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><strong>2.1 リポジトリを作成する</strong></h3>
+<ul>
+<li>ブラウザでgithubにアクセスし，新しいリポジトリを作成する．</li>
+<li>名前はプロダクト名にしておくとわかりやすくて良い．(janken, mamopadなど)</li>
+<li>作成するとurlが表示されるのでそのままにしておく．SSHのタブを選択しておく(後でurlを使用するため)</li>
+</ul>
+<h3 id="22-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B"><strong>2.2 ディレクトリを変更する</strong></h3>
+<p>ターミナルで下記コマンドを入力する．(enterは押さないこと)<br>
+【重要】cdのあとにスペースを入れること</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> 
+</div></code></pre>
+<p>入力したらプロダクトのフォルダをターミナルのウインドウ内にドラッグ&amp;ドロップする．
+すると，「cd 」の後にパスが表示されるので，間違いなければ「enter」を押す．</p>
+<h3 id="23-%E5%88%9D%E6%9C%9F%E5%8C%96"><strong>2.3 初期化</strong></h3>
+<p>下記コマンドを入力する．</p>
+<pre class="hljs"><code><div>$ git init
+</div></code></pre>
+<h3 id="24-%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE%E7%99%BB%E9%8C%B2"><strong>2.4 リポジトリの登録</strong></h3>
+<p>コードをアップするリポジトリ(宛先)を登録する．先程ブラウザで作成したリポジトリのurl（<code>git@github.com/***</code>）を使用する．</p>
+<p>ターミナルで以下を実行する．</p>
+<pre class="hljs"><code><div>$ git remote add origin リポジトリのurl
+</div></code></pre>
+<p>登録されているかどうかは以下のコマンドで確認できる．</p>
+<pre class="hljs"><code><div>$ git remote -v
+</div></code></pre>
+<p>確認結果</p>
+<pre class="hljs"><code><div>origin	git@github.com:******/******.git (fetch)
+origin	git@github.com:******/******.git (push)
+</div></code></pre>
+<p>間違っている場合は以下で登録し直す．</p>
+<pre class="hljs"><code><div>$ git remote <span class="hljs-built_in">set</span>-url origin 正しいurl
+</div></code></pre>
+<h3 id="25-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92add"><strong>2.5 ファイルをadd</strong></h3>
+<p>githubにアップするファイルをaddする．アップするには「add」「commit」「push」の3手順が必要．</p>
+<p>ターミナルで以下を実行する．addの後にはスペースが入る点に注意！</p>
+<pre class="hljs"><code><div>$ git add .
+</div></code></pre>
+<h3 id="26-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92commit"><strong>2.6 ファイルをcommit</strong></h3>
+<p>commitはファイルのバージョンを作成するイメージ．コミットを重ねても，以前のコミットへ状態を戻すことでファイルの内容をもとに戻すことが可能．
+以下のコマンドを入力する．</p>
+<p>-mのあとの「&quot;&quot;」内に適宜コメントを追加する．(変更内容など)</p>
+<pre class="hljs"><code><div>$ git commit -m<span class="hljs-string">"ここにコメントを書く"</span>
+</div></code></pre>
+<h3 id="27-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92push"><strong>2.7 ファイルをpush</strong></h3>
+<p>pushは実際にファイルをアップロードするイメージ．この段階ではじめてgithubにコードが追加される．
+下記コマンドを入力する．</p>
+<pre class="hljs"><code><div>$ git push origin master
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Counting objects: 4, <span class="hljs-keyword">done</span>.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), <span class="hljs-keyword">done</span>.
+Writing objects: 100% (4/4), 385 bytes | 385.00 KiB/s, <span class="hljs-keyword">done</span>.
+Total 4 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 <span class="hljs-built_in">local</span> objects.
+To github.com:******/******.git
+   9ae72be..eb700ec  master -&gt; master
+</div></code></pre>
+<p>ブラウザでgithubのページを確認し，ファイルがアップされていれば成功！</p>
+<div style="page-break-before:always"></div>
+<h2 id="3-%E7%99%BB%E9%8C%B2%E6%B8%88%E3%81%BF%E3%81%AE%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%97%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AB%E3%82%84%E3%82%8B%E3%81%93%E3%81%A8"><strong>3. 登録済みのプロダクトを変更したときにやること</strong></h2>
+<ul>
+<li>すでにリポジトリに登録してあるファイルに追記，編集などしたとき</li>
+</ul>
+<h3 id="31-%E3%80%90%E8%B6%85%E9%87%8D%E8%A6%81%E3%80%91%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B"><strong>3.1 【超重要】ディレクトリを変更する</strong></h3>
+<ul>
+<li>これを忘れると別のリポジトリに登録することになりものすごく面倒なので注意すること！！</li>
+<li>ターミナルで下記コマンドを入力する．cdのあとには必ずスペース入れる．(enterは押さないこと)</li>
+</ul>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> 
+</div></code></pre>
+<p>入力したらプロダクトのフォルダをドラッグ&amp;ドロップする．
+すると，「cd」の後にパスが表示されるので，間違いなければ「enter」を押す．</p>
+<p>以降は上記「2.5」「2.6」「2.7」と同様．</p>
+<h3 id="32-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92add"><strong>3.2 ファイルをadd</strong></h3>
+<pre class="hljs"><code><div>$ git add .
+</div></code></pre>
+<h3 id="33-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92commit"><strong>3.3 ファイルをcommit</strong></h3>
+<pre class="hljs"><code><div>$ git commit -m<span class="hljs-string">"ここにコメントを書く"</span>
+</div></code></pre>
+<h3 id="34-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92push"><strong>3.4 ファイルをpush</strong></h3>
+<pre class="hljs"><code><div>$ git push origin master
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Counting objects: 4, <span class="hljs-keyword">done</span>.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), <span class="hljs-keyword">done</span>.
+Writing objects: 100% (4/4), 385 bytes | 385.00 KiB/s, <span class="hljs-keyword">done</span>.
+Total 4 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 <span class="hljs-built_in">local</span> objects.
+To github.com:******/******.git
+   9ae72be..eb700ec  master -&gt; master
+</div></code></pre>
+<p>ブラウザでgithubのリポジトリを確認して登録されていればOK！</p>
+
+</body>
+</html>

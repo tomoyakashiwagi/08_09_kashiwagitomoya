@@ -1,0 +1,2885 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>laravel.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="mvc%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E9%96%8B%E7%99%BA%E3%81%AE%E5%9F%BA%E7%A4%8E"><strong>MVCフレームワーク開発の基礎</strong></h1>
+<p>作成日：2019/01/23</p>
+<p>更新日：2019/03/06</p>
+<p>実行環境：cloud9</p>
+<p>PHPバージョン：7.3.2</p>
+<p>Laravelバージョン：5.8.3</p>
+<div style="page-break-before:always"></div>
+<h2 id="%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E3%81%AF"><strong>フレームワークとは</strong></h2>
+<ul>
+<li>フレームワークとは，はじめからよく使用される処理，関数，クラスなどが用意された枠組みのこと．</li>
+<li>フレームワークを使用しない場合（例えば，PHPで0から自分で書き進める場合），実際にプログラムを書く人によって書き方が異なる．（1ファイルに多く記述，関数化する，オブジェクト指向，など）</li>
+<li>その場合，複数人のチームで開発を行う際に規則性がないコードが生産されてしまう原因となる．</li>
+<li>フレームワークを使用すれば，はじめから規則性が決まっており，書き方さえ把握していれば誰でも規則に沿ったコードを書けるようになる．</li>
+</ul>
+<h3 id="%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88">メリット</h3>
+<ul>
+<li>実装の負荷軽減．</li>
+<li>保守性，セキュリティの担保．</li>
+<li>規則性のあるコード．</li>
+<li>可読性の担保．</li>
+</ul>
+<h3 id="%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88">デメリット</h3>
+<ul>
+<li>学習コスト．</li>
+<li>環境構築の手間．</li>
+<li>言語への習熟度に影響される．</li>
+</ul>
+<h2 id="laravel%E3%81%AE%E7%89%B9%E5%BE%B4"><strong>Laravelの特徴</strong></h2>
+<h3 id="%E5%AD%A6%E7%BF%92%E3%82%B3%E3%82%B9%E3%83%88%E3%81%AE%E4%BD%8E%E3%81%95">学習コストの低さ</h3>
+<ul>
+<li>コードが読みやすく，記述量が少ない．</li>
+<li>入力チェック，ログイン機能，ページネーションなどのwebサービスでよく使用される機能の実装が簡単．</li>
+<li>本番環境へのアップロードが他のフレームワークと比較して容易．</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="mvc%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E3%81%AF"><strong>MVCフレームワークとは</strong></h2>
+<ul>
+<li>フレームワークにおいて，よく使われるシステム．</li>
+<li>「Model」「View」「Controller」で構成される．</li>
+<li>この3つがそれぞれ異なる役割を担う「役割分担」のシステム．</li>
+<li>初めて触れる場合，この役割を明確に理解することは困難．</li>
+<li>そのため，まずはMVCフレームワークで構成されたアプリケーションを実際に作成し，その後で知識を固めたほうが良い．</li>
+</ul>
+<h3 id="model%E3%83%A2%E3%83%87%E3%83%AB">Model/モデル</h3>
+<ul>
+<li>webシステムの中で，データ処理を扱う部分．</li>
+<li>データベース操作である「登録」「表示」「更新」「削除」を行うのが主な役割となる．</li>
+</ul>
+<h3 id="view%E3%83%93%E3%83%A5%E3%83%BC">View/ビュー</h3>
+<ul>
+<li>ブラウザでの表示領域を扱う部分．</li>
+<li>モデルやコントローラの処理を受け取り，ブラウザで表示するhtmlを出力することが役割．</li>
+</ul>
+<h3 id="controller%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC">Controller/コントローラー</h3>
+<ul>
+<li>モデルとビューの制御を行う部分．</li>
+<li>リクエストされたURLに応じて，処理を実行する．</li>
+</ul>
+<h3 id="route%E3%83%AB%E3%83%BC%E3%83%88">Route/ルート</h3>
+<ul>
+<li>アクセスされたURLに応じて処理を分類する部分．</li>
+<li>URLに応じて実行する関数を決める役割を持つ．</li>
+</ul>
+<h3 id="%E2%80%BBlaravel%E3%81%A8mvc">※LaravelとMVC</h3>
+<ul>
+<li>開発者のTaylor Otwell氏は「LaravelはMVCではない」と述べている．</li>
+<li>確かにMVCの枠組みに近いが，Laravelは厳密に処理を記述する箇所が定められているわけではなく，柔軟に記述できる点も特徴である．</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E6%BA%96%E5%82%99"><strong>開発環境準備</strong></h2>
+<ul>
+<li>クラウド開発環境である「cloud9」を使用して開発を進める．</li>
+</ul>
+<h3 id="workspace-%E3%81%AE%E6%BA%96%E5%82%99">workspace の準備</h3>
+<ul>
+<li>wokspaceとはアプリケーションを管理するフォルダのようなもの．</li>
+<li>1つのwebアプリケーションに対して，1つのworkspace，という理解でOK．</li>
+<li>name<br>
+アプリケーション名を入力．自身が区別できるものでOK．</li>
+<li>description<br>
+アプリケーションの説明．任意で入力する．</li>
+<li>Clone from Git or Mercurial URL (optional)<br>
+githubのリポジトリと連携することができる．後からでも連携できるが，この時点でgithubのリポジトリを作成して連携しておくほうが簡単なのでオススメ．</li>
+<li>Choose a template<br>
+「PHP」を選択．</li>
+<li>入力完了したら「Create workspace」をクリックするとworkspaceの作成が始まるのでしばらく待つ．</li>
+<li>入力画面は下記
+<img src="img/cloud9-setup.png" alt="workspace設定画面"></li>
+<li>workspace設定完了後の画面
+<img src="img/cloud9-workspace.png" alt="設定完了後の画面"></li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="laravel%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><strong>Laravelのインストール</strong></h2>
+<ul>
+<li>PHP及びcomposerの状況を確認しつつ，Laravelのインストールを進める．</li>
+<li>「compoesr」とはPHPライブラリのインストールやバージョン管理を行う便利ツール．</li>
+</ul>
+<h3 id="1-php%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%A2%BA%E8%AA%8D"><strong>1. PHPのバージョン確認</strong></h3>
+<ul>
+<li>インストールされているPHPのバージョンを確認する．</li>
+<li>ターミナルでバージョン確認のコマンドを実行する．</li>
+</ul>
+<p>注意点（以降，ターミナルでの作業すべて）</p>
+<ul>
+<li>$マークは入力しない．</li>
+<li>入力はすべて半角で行う．</li>
+</ul>
+<p>ターミナルで以下を実行</p>
+<pre class="hljs"><code><div>$ php -v
+</div></code></pre>
+<p>出力結果（バージョンは5.5.9）</p>
+<pre class="hljs"><code><div>PHP 5.5.9-1ubuntu4.22 (cli) (built: Aug  4 2017 19:40:28) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
+    with Zend OPcache v7.0.3, Copyright (c) 1999-2014, by Zend Technologies
+    with Xdebug v2.5.5, Copyright (c) 2002-2017, by Derick Rethans
+</div></code></pre>
+<h3 id="2-compoer%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%A2%BA%E8%AA%8D"><strong>2. compoerのバージョン確認</strong></h3>
+<p>ターミナルで以下を実行</p>
+<pre class="hljs"><code><div>$ composer
+</div></code></pre>
+<p>出力結果（バージョンは1.5.1）</p>
+<pre class="hljs"><code><div>   ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ \/ __ `__ \/ __ \/ __ \/ ___/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
+\____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
+                    /_/
+Composer version 1.5.1 2017-08-09 16:07:22
+
+Usage:
+  command [options] [arguments]
+...
+</div></code></pre>
+<h3 id="3-composer%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88"><strong>3. composerのアップデート</strong></h3>
+<p>ターミナルで以下を実行</p>
+<pre class="hljs"><code><div>$ sudo composer self-update
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>Updating to version 1.8.4 (stable channel).
+   Downloading (100%)         
+Use composer self-update --rollback to <span class="hljs-built_in">return</span> to version 1.5.1
+</div></code></pre>
+<p>再度バージョン確認</p>
+<pre class="hljs"><code><div>$ composer
+</div></code></pre>
+<p>実行結果（バージョンは1.8.4）</p>
+<pre class="hljs"><code><div>   ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ \/ __ `__ \/ __ \/ __ \/ ___/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
+\____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
+                    /_/
+Composer version 1.8.4 2019-02-11 10:52:10
+
+Usage:
+  <span class="hljs-built_in">command</span> [options] [arguments]
+...
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h3 id="4-php%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97"><strong>4. PHPのバージョンアップ</strong></h3>
+<ul>
+<li>Laravelの最新バージョンでは「PHP7.0以上」が必要となる．</li>
+<li>現在のバージョンは5.5.9なので，以下の手順でバージョンアップを行う．</li>
+</ul>
+<p>ターミナルで以下を実行．</p>
+<pre class="hljs"><code><div>$ sudo add-apt-repository ppa:ondrej/php
+</div></code></pre>
+<p>以下が出力されるがEnter押下で続行</p>
+<pre class="hljs"><code><div>Press [ENTER] to <span class="hljs-built_in">continue</span> or ctrl-c to cancel adding it
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+gpg: keyring `/tmp/tmpgu2gq6me/secring.gpg<span class="hljs-string">' created
+gpg: keyring `/tmp/tmpgu2gq6me/pubring.gpg'</span> created
+gpg: requesting key E5267A6C from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpgu2gq6me/trustdb.gpg: trustdb created
+gpg: key E5267A6C: public key <span class="hljs-string">"Launchpad PPA for Ondřej Surý"</span> imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+</div></code></pre>
+<p>引き続き，以下を実行</p>
+<pre class="hljs"><code><div>$ sudo apt-get update
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+Get:52 http://asia-east1.gce.clouds.archive.ubuntu.com trusty/universe i386 Packages [7597 kB]
+Get:53 http://asia-east1.gce.clouds.archive.ubuntu.com trusty/multiverse i386 Packages [172 kB]
+Fetched 37.0 MB <span class="hljs-keyword">in</span> 18s (1971 kB/s)                                             
+Reading package lists... Done
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<p>以下を実行</p>
+<pre class="hljs"><code><div>$ sudo apt-get install libapache2-mod-php7.3
+</div></code></pre>
+<p>途中で下記出力された場合はすべて「y」で続行</p>
+<pre class="hljs"><code><div>Do you want to <span class="hljs-built_in">continue</span>? [Y/n]
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+Creating config file /etc/php/7.3/apache2/php.ini with new version
+libapache2-mod-php7.3: php5 module already enabled, not enabling PHP 7.3
+Processing triggers <span class="hljs-keyword">for</span> libc-bin (2.19-0ubuntu6.11) ...
+</div></code></pre>
+<p>以下を実行</p>
+<pre class="hljs"><code><div>$ sudo a2dismod php5
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>Module php5 disabled.
+To activate the new configuration, you need to run:
+  service apache2 restart
+</div></code></pre>
+<p>以下を実行</p>
+<pre class="hljs"><code><div>$ sudo a2enmod php7.3
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>Considering dependency mpm_prefork <span class="hljs-keyword">for</span> php7.3:
+Considering conflict mpm_event <span class="hljs-keyword">for</span> mpm_prefork:
+Considering conflict mpm_worker <span class="hljs-keyword">for</span> mpm_prefork:
+Module mpm_prefork already enabled
+Considering conflict php5 <span class="hljs-keyword">for</span> php7.3:
+Enabling module php7.3.
+To activate the new configuration, you need to run:
+  service apache2 restart
+</div></code></pre>
+<p>以下を実行</p>
+<pre class="hljs"><code><div>$ sudo apt-get install php7.3-dom php7.3-mbstring php7.3-zip php7.3-mysql
+</div></code></pre>
+<p>途中で下記出力された場合はすべて「y」で続行</p>
+<pre class="hljs"><code><div>Do you want to <span class="hljs-built_in">continue</span>? [Y/n]
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Creating config file /etc/php/7.3/mods-available/zip.ini with new version
+Processing triggers <span class="hljs-keyword">for</span> libc-bin (2.19-0ubuntu6.11) ...
+Processing triggers <span class="hljs-keyword">for</span> libapache2-mod-php7.3 (7.3.2-3+ubuntu14.04.1+deb.sury.org+1) ...
+</div></code></pre>
+<p>アップデート後のPHPバージョン確認</p>
+<pre class="hljs"><code><div>$ php -v
+</div></code></pre>
+<p>実行結果（バージョンは7.2.14）</p>
+<pre class="hljs"><code><div>PHP 7.3.2-3+ubuntu14.04.1+deb.sury.org+1 (cli) (built: Feb  8 2019 16:00:14) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.2, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.2-3+ubuntu14.04.1+deb.sury.org+1, Copyright (c) 1999-2018, by Zend Technologies
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h3 id="5-laravel%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%A9%E3%81%AE%E6%BA%96%E5%82%99"><strong>5. Laravelインストーラの準備</strong></h3>
+<ul>
+<li>Laravelインストーラーは下記の場所に配置される．</li>
+</ul>
+<pre class="hljs"><code><div>/home/ubuntu/.composer/vender/laravel/installer
+</div></code></pre>
+<ul>
+<li>実際のインストールや必要なコードの配置は「composer」コマンドで実行するため,
+設置場所に留意する必要はない．</li>
+<li>「composer」は他に必要なライブラリなども合わせてダウンロードして配置を行う．「composer」を使用しない場合，すべて自分でダウンロードして設置場所の設定も行う必要がある．</li>
+</ul>
+<p>以下を実行．</p>
+<pre class="hljs"><code><div>$ sudo composer global require <span class="hljs-string">"laravel/installer"</span>
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+symfony/console suggests installing symfony/lock
+guzzlehttp/guzzle suggests installing psr/<span class="hljs-built_in">log</span> (Required <span class="hljs-keyword">for</span> using the Log middleware)
+Writing lock file
+Generating <span class="hljs-built_in">autoload</span> files
+</div></code></pre>
+<h3 id="6-laravel%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90"><strong>6. Laravelプロジェクトの作成</strong></h3>
+<ul>
+<li>実際にLaravelプロジェクトを作成する．</li>
+<li>インストールできる範囲で最新のLaravelがインストールされる．</li>
+</ul>
+<p>以下を入力．（cmsという名前でプロジェクトを作成する）</p>
+<pre class="hljs"><code><div>$ composer create-project laravel/laravel cms
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+&gt; @php artisan key:generate --ansi
+Application key <span class="hljs-built_in">set</span> successfully.
+</div></code></pre>
+<p>以下でLaravelのバージョンを確認できる．</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> cms
+$ php artisan --version
+</div></code></pre>
+<p>実行結果（バージョンは5.8.3）</p>
+<pre class="hljs"><code><div>Laravel Framework 5.8.3
+</div></code></pre>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91laravel%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E6%8C%87%E5%AE%9A"><strong>【参考】Laravelのバージョン指定</strong></h3>
+<p>今回は最新版を使用してプロジェクトを作成しているが，バージョンを指定することもできる．</p>
+<p>現在（2019年3月）で最新のLTS（長期サポートバージョン）は5.5となっているため，本番環境へのデプロイを意図する場合はバージョン5.5を指定したほうがサポート期間が長く安心である．</p>
+<p>バージョン指定（5.5）する際には，プロジェクト作成時のコマンドを下記のように変更する．</p>
+<pre class="hljs"><code><div>$ composer create-project laravel/laravel cms 5.5.* --prefer-dist
+</div></code></pre>
+<h3 id="7-laravel%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%A2%BA%E8%AA%8D"><strong>7. Laravelのインストール確認</strong></h3>
+<ul>
+<li>Laravelインストールの確認にはwebブラウザで動作させて確認する．</li>
+<li>cloud9にはwebサーバが標準で搭載されているため，以下の手順で確認を行う．</li>
+</ul>
+<ol>
+<li>「Run Project」ボタンをクリック．</li>
+<li>表示されたURLをクリックし「open」を選択．</li>
+<li>表示されたwebページで「Open the App」ボタンをクリック．</li>
+<li>ディレクトリ構成の画面（下記）が表示される．
+<img src="img/first-top.png" alt="初回起動画面"></li>
+<li>以下のアドレスにアクセスし，トップページの表示を確認する．上の画面から「cms/」「public/」の順にクリックでもOK．</li>
+</ol>
+<pre class="hljs"><code><div>https://プロジェクト名-ユーザ名.c9users.io/cms/public/
+</div></code></pre>
+<ol start="6">
+<li>下記画面が表示されればインストール完了．
+<img src="img/top.png" alt="トップ画面"></li>
+</ol>
+<div style="page-break-before:always"></div>
+<h2 id="web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E8%A8%AD%E5%AE%9A%E5%A4%89%E6%9B%B4"><strong>webサーバの設定変更</strong></h2>
+<ul>
+<li>現状では，ルートディレクトリでトップページが表示されず，「/cms/public/」を追加する必要がある．</li>
+<li>ドキュメントルートアクセス時にトップページが表示されるよう設定を変更する．</li>
+</ul>
+<h3 id="%E2%80%BB%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AB%E3%83%BC%E3%83%88%E3%81%A8%E3%81%AF%EF%BC%9F">※ドキュメントルートとは？</h3>
+<ul>
+<li><code>https://hogehoge.com</code>などのURLにアクセスしたときに表示されるファイルの入っているディレクトリのこと．</li>
+</ul>
+<p>変更前のトップページのURL</p>
+<pre class="hljs"><code><div>https://プロジェクト名-ユーザ名.c9users.io/cms/public/
+</div></code></pre>
+<p>変更後のトップページのURL</p>
+<pre class="hljs"><code><div>https://プロジェクト名-ユーザ名.c9users.io
+</div></code></pre>
+<h3 id="1-web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AB%E3%83%BC%E3%83%88%E5%A4%89%E6%9B%B4"><strong>1. webサーバのドキュメントルート変更</strong></h3>
+<p>ターミナルで以下を実行．vimというエディタで設定ファイルを開く．</p>
+<pre class="hljs"><code><div>$ sudo vim /etc/apache2/sites-enabled/001-cloud9.conf
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>&lt;VirtualHost *:8080&gt;
+    DocumentRoot /home/ubuntu/workspace
+    ServerName https://${C9_HOSTNAME}:443
+
+    LogLevel info
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    &lt;Directory /home/ubuntu/workspace&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+
+ServerName https://${C9_HOSTNAME}
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+</div></code></pre>
+<p>「i」キーを押すと左下に「INSERT」が表示されるので，表示された状態で下記のように編集する．</p>
+<pre class="hljs"><code><div>&lt;VirtualHost *:8080&gt;
+<span class="hljs-deletion">-   DocumentRoot /home/ubuntu/workspace</span>
+<span class="hljs-addition">+   DocumentRoot /home/ubuntu/workspace/cms/public</span>
+    ServerName https://${C9_HOSTNAME}:443
+
+    LogLevel info
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    &lt;Directory /home/ubuntu/workspace&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+
+ServerName https://${C9_HOSTNAME}
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+</div></code></pre>
+<p>編集が終了したら「esc」を押下する．INSERTが消えるので，消えた状態で「:wq」を入力して「Enter」を押下して完了．</p>
+<h3 id="2-web%E3%82%B5%E3%83%BC%E3%83%90%E8%A8%AD%E5%AE%9A%E5%AE%8C%E4%BA%86%E5%BE%8C%E3%81%AE%E7%94%BB%E9%9D%A2%E7%A2%BA%E8%AA%8D"><strong>2. webサーバ設定完了後の画面確認</strong></h3>
+<ul>
+<li>
+<p>ターミナルのカレントディレクトリが「cms」であることを確認する．ターミナルの「$」の前が「<code>/cms</code>」となっていればOK．</p>
+</li>
+<li>
+<p>「<code>/cms</code>」でない場合はターミナルで以下を実行してディレクトリを移動する．</p>
+</li>
+</ul>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> cms
+</div></code></pre>
+<ul>
+<li>ターミナルで以下のコマンドを実行．</li>
+</ul>
+<pre class="hljs"><code><div>$ sudo composer update
+</div></code></pre>
+<ul>
+<li>「Run Project」ボタンを押下．</li>
+<li>下記のアドレスを入力し，トップ画面が表示されればOK．</li>
+</ul>
+<pre class="hljs"><code><div>https://プロジェクト名-ユーザ名.c9users.io
+</div></code></pre>
+<p>トップ画面
+<img src="img/top.png" alt="トップ画面"></p>
+<div style="page-break-before:always"></div>
+<h2 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91laravel%E3%83%AB%E3%83%BC%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E6%88%90"><strong>【参考】Laravelルートディレクトリのファイル構成</strong></h2>
+<p>主なディレクトリ構成を解説する．次項で挙げる，よく使用するディレクトリを押さえれば当面はOK．</p>
+<h3 id="app"><strong>app</strong></h3>
+<ul>
+<li>アプリケーションのコアコードを配置する．</li>
+<li>ModelやControllerもここに配置．</li>
+</ul>
+<h3 id="bootstrap"><strong>bootstrap</strong></h3>
+<ul>
+<li>フレームワークの初期起動やオートローディングなどの設定ファイルが含まれる．</li>
+<li>cache関連のファイルもここに保存される．</li>
+</ul>
+<h3 id="config"><strong>config</strong></h3>
+<ul>
+<li>アプリケーションの設定ファイルが保存される．</li>
+</ul>
+<h3 id="database"><strong>database</strong></h3>
+<ul>
+<li>データベースのマイグレーションファイルが保存される．</li>
+</ul>
+<h3 id="public"><strong>public</strong></h3>
+<ul>
+<li>クライアントサイドのasset（css, javascriptなど）を配置する．</li>
+<li>ここがドキュメントルートとなる．</li>
+</ul>
+<h3 id="resources"><strong>resources</strong></h3>
+<ul>
+<li>Viewのファイルが保存される．</li>
+</ul>
+<h3 id="routes"><strong>routes</strong></h3>
+<ul>
+<li>ルーティングを行うファイルを配置する．</li>
+</ul>
+<h3 id="tests"><strong>tests</strong></h3>
+<ul>
+<li>自動テストを配置する．</li>
+</ul>
+<h3 id="vendor"><strong>vendor</strong></h3>
+<ul>
+<li>composerでインストールしたパッケージが配置される．</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB"><strong>よく使用するディレクトリ&amp;ファイル</strong></h2>
+<h3 id="1-env"><strong>1. /.env</strong></h3>
+<ul>
+<li>環境設定に使用</li>
+</ul>
+<h3 id="2-routeswebphp"><strong>2. /routes/web.php</strong></h3>
+<ul>
+<li>ルーティングに使用</li>
+</ul>
+<h3 id="3-resourcesviews"><strong>3. /resources/views/</strong>***</h3>
+<ul>
+<li>Viewで使用するファイルを設定，保存</li>
+</ul>
+<h3 id="4-apphttpcontroller"><strong>4. /app/Http/controller/</strong>***</h3>
+<ul>
+<li>Model, Controllerを設定，保存</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A0-%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E6%BA%96%E5%82%99"><strong>todo管理アプリの作成①-データベースの準備</strong></h2>
+<h3 id="0-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E4%BD%9C%E6%88%90%E3%81%AE%E6%B5%81%E3%82%8C"><strong>0. アプリケーション作成の流れ</strong></h3>
+<ol>
+<li>データベース&amp;テーブルの設計，作成（マイグレーション）</li>
+<li>モデルの作成（データ操作できる状態）</li>
+<li>ルーティング（URLとViewや処理を紐付ける）</li>
+<li>Viewの作成（表示する画面）</li>
+<li>処理を追加（登録，表示，更新，削除）</li>
+</ol>
+<h3 id="1-%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A"><strong>1. データベースの設定</strong></h3>
+<ol>
+<li>
+<p>「<code>.env</code>」ファイルにデータベースの設定を記述する．cmsディレクトリ直下に配置されている．</p>
+</li>
+<li>
+<p>「<code>.env</code>」ファイルは隠しファイルなので，表示されていない場合は，ファイルツリー画面右上の歯車マークをクリックして「Show Hidden Files」にチェックを入れると表示される．</p>
+</li>
+<li>
+<p>「<code>.env</code>」ファイルをダブルクリックして開く．</p>
+</li>
+<li>
+<p>ファイルの内容を以下のように編集する．ユーザ名はURLの<code>ide.c9.io/</code>以下となる．</p>
+</li>
+</ol>
+<p><code>.env</code>ファイルの内容</p>
+<pre class="hljs"><code><div>DB_CONNECTION=mysql
+<span class="hljs-deletion">-DB_HOST=127.0.0.1</span>
+<span class="hljs-addition">+DB_HOST=localhost</span>
+DB_PORT=3306
+<span class="hljs-deletion">-DB_DATABASE=homestead</span>
+<span class="hljs-addition">+DB_DATABASE=c9</span>
+<span class="hljs-deletion">-DB_USERNAME=homestead</span>
+<span class="hljs-addition">+DB_USERNAME=ユーザ名</span>
+<span class="hljs-deletion">-DB_PASSWORD=secret</span>
+<span class="hljs-addition">+DB_PASSWORD=</span>
+</div></code></pre>
+<h3 id="2-%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E7%A2%BA%E8%AA%8D"><strong>2. データベースの確認</strong></h3>
+<p>記述したらDBの状態を確認する．ターミナルのカレントディレクトリが「cms」であることを確認する．ターミナルの「$」の前が「<code>/cms</code>」となっていればOK．</p>
+<p>「<code>/cms</code>」でない場合はターミナルで以下を実行してディレクトリを移動する．</p>
+<pre class="hljs"><code><div>$ <span class="hljs-built_in">cd</span> cms
+</div></code></pre>
+<p>続けて以下を入力し，mysqlを起動する．</p>
+<pre class="hljs"><code><div>$ mysql-ctl cli
+</div></code></pre>
+<p>実行結果．以降，mysql内で操作を行う．</p>
+<pre class="hljs"><code><div>...
+Type <span class="hljs-string">'help;'</span> or <span class="hljs-string">'\h'</span> <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>. Type <span class="hljs-string">'\c'</span> to clear the current input statement.
+
+mysql&gt; 
+</div></code></pre>
+<p>データベース一覧を表示し，「c9」が存在することを確認する．</p>
+<pre class="hljs"><code><div>mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| c9                 |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
++--------------------+
+5 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</div></code></pre>
+<p>「c9」データベースを選択．</p>
+<pre class="hljs"><code><div>mysql&gt; use c9;
+Database changed
+</div></code></pre>
+<p>テーブルを表示するが，まだ設定していないので存在しない．</p>
+<pre class="hljs"><code><div>mysql&gt; show tables;
+Empty <span class="hljs-built_in">set</span> (0.01 sec)
+</div></code></pre>
+<p>mysqlを終了する．通常のターミナルに戻る．</p>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-built_in">exit</span>;
+Bye
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A1-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成②-テーブルの作成</strong></h2>
+<h3 id="1-%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3"><strong>1. データベースマイグレーション</strong></h3>
+<p>マイグレーションとは，必要なテーブルの構造をPHPファイル（マイグレーションファイル）で定義し，実行することでテーブルの作成を行うシステム．</p>
+<p>テーブル一つに対して，1つのマイグレーションファイルが作成・実行されるイメージ．</p>
+<p>【解説】コマンド書式</p>
+<pre class="hljs"><code><div>$ php artisan make:migration ファイル名 --create=テーブル名
+</div></code></pre>
+<p>上記コマンドで以下のようなマイグレーションファイルが作成される．
+<code>[yyyy]_[mm]_[dd]_[hms]_[ファイル名].php</code></p>
+<p>マイグレーションファイルの内容は以下のようになる．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Schema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Blueprint</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Migration</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateTasksTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::create(<span class="hljs-string">'テーブル名'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;increments(<span class="hljs-string">'id'</span>);
+            <span class="hljs-comment">//ここに必要なカラム名を追記する．</span>
+            $table-&gt;timestamps();
+        });
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::dropIfExists(<span class="hljs-string">'テーブル名'</span>);
+    }
+}
+</div></code></pre>
+<p>カラム名の追記は「<code>$table-&gt;カラム型('カラム名');</code>」のように行う．</p>
+<pre class="hljs"><code><div>$table-&gt;increments(<span class="hljs-string">'id'</span>);       <span class="hljs-comment">//自動採番（主キー）</span>
+$table-&gt;string(<span class="hljs-string">'email'</span>);        <span class="hljs-comment">//varcharカラム</span>
+$table-&gt;string(<span class="hljs-string">'name'</span>, <span class="hljs-number">100</span>);    <span class="hljs-comment">//長さ指定カラム</span>
+$table-&gt;integer(<span class="hljs-string">'price'</span>);       <span class="hljs-comment">//integerカラム</span>
+$table-&gt;text(<span class="hljs-string">'description'</span>);    <span class="hljs-comment">//textカラム</span>
+$table-&gt;dateTime(<span class="hljs-string">'created_at'</span>); <span class="hljs-comment">//datetimeカラム</span>
+$table-&gt;timestamps();           <span class="hljs-comment">//created_atとupdated_atカラムを追加</span>
+$table-&gt;boolean(<span class="hljs-string">'confirmed'</span>);   <span class="hljs-comment">//true, falseカラム</span>
+$table-&gt;json(<span class="hljs-string">'meta'</span>);           <span class="hljs-comment">//jsonカラム</span>
+</div></code></pre>
+<p>カラムのオプションは以下の通り．</p>
+<pre class="hljs"><code><div>$table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;nullable();    <span class="hljs-comment">//nullを許可</span>
+$table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;unique();      <span class="hljs-comment">//カラムの値を一意にする</span>
+</div></code></pre>
+<h3 id="2-%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90"><strong>2. マイグレーションファイルの作成</strong></h3>
+<p>今回は，</p>
+<ul>
+<li>ファイル名「<code>create_tasks_table</code>」</li>
+<li>テーブル名「<code>tasks</code>」※テーブル名は複数形（重要）</li>
+</ul>
+<p>の名前でマイグレーションファイルとテーブルを作成する．</p>
+<p>ターミナルで以下を実行．</p>
+<pre class="hljs"><code><div>$ php artisan make:migration create_tasks_table --create=tasks
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Created Migration: 2019_**_**_******_create_tasks_table
+</div></code></pre>
+<p>以下の場所にマイグレーションファイルが作成されるので内容を確認する．</p>
+<pre class="hljs"><code><div>/cms/database/migrations
+</div></code></pre>
+<p>ファイルの内容は以下の通り．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Schema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Blueprint</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Migration</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateTasksTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::create(<span class="hljs-string">'tasks'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint $table)</span> </span>{
+            $table-&gt;increments(<span class="hljs-string">'id'</span>);
+            $table-&gt;timestamps();
+        });
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+    </span>{
+        Schema::dropIfExists(<span class="hljs-string">'tasks'</span>);
+    }
+}
+</div></code></pre>
+<p>今回はtodo管理アプリケーションを作成するので，以下のカラムを追加する．</p>
+<ul>
+<li>task: タスク名</li>
+<li>deadline: タスクの締切</li>
+<li>comment: タスクの詳細</li>
+</ul>
+<p><code>[yyyy]_[mm]_[dd]_[hms]_create_tasks_table.php</code>に必要なカラム名を追記する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTasksTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table-&gt;increments('id');
+<span class="hljs-addition">+           $table-&gt;string('task');</span>
+<span class="hljs-addition">+           $table-&gt;date('deadline');</span>
+<span class="hljs-addition">+           $table-&gt;text('comment')-&gt;nullable();</span>
+            $table-&gt;timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('tasks');
+    }
+}
+</div></code></pre>
+<p>【注意】このままだと実行時にエラーになるので，文字列型の最大長を変更する．</p>
+<p><code>/cms/app/Providers/AppServiceProvider.php</code>の内容を以下のように編集する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+<span class="hljs-addition">+ use Illuminate\Support\Facades\Schema;</span>
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+<span class="hljs-deletion">-       //</span>
+<span class="hljs-addition">+       Schema::defaultStringLength(191);</span>
+    }
+
+    public function register()
+    {
+        //
+    }
+}
+</div></code></pre>
+<h3 id="3-%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9F%E8%A1%8C"><strong>3. マイグレーションの実行</strong></h3>
+<p>マイグレーションファイルを作成したら，マイグレーションを実行する．</p>
+<p>ターミナルで以下を実行する．</p>
+<pre class="hljs"><code><div>$ php artisan migrate
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2019_01_23_000319_create_tasks_table
+Migrated:  2019_01_23_000319_create_tasks_table
+</div></code></pre>
+<p>うまくいかないときはマイグレーションファイルを見直して以下を実行．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:fresh
+</div></code></pre>
+<p>mysqlでテーブルの状況を確認する．ターミナルで以下を実行する．</p>
+<pre class="hljs"><code><div>$ mysql-ctl cli
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>...
+Type <span class="hljs-string">'help;'</span> or <span class="hljs-string">'\h'</span> <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>. Type <span class="hljs-string">'\c'</span> to clear the current input statement.
+
+mysql&gt;
+</div></code></pre>
+<p>データベース変更．</p>
+<pre class="hljs"><code><div>mysql&gt; use c9;
+Reading table information <span class="hljs-keyword">for</span> completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+</div></code></pre>
+<p>テーブルを一覧表示．tasksテーブルが作成されていればOK．</p>
+<pre class="hljs"><code><div>mysql&gt; show tables;
++-----------------+
+| Tables_in_c9    |
++-----------------+
+| migrations      |
+| password_resets |
+| tasks           |
+| users           |
++-----------------+
+4 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</div></code></pre>
+<p>テーブルの構造確認．</p>
+<pre class="hljs"><code><div>mysql&gt; desc tasks;
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| task       | varchar(191)     | NO   |     | NULL    |                |
+| deadline   | date             | NO   |     | NULL    |                |
+| comment    | text             | YES  |     | NULL    |                |
+| created_at | timestamp        | YES  |     | NULL    |                |
+| updated_at | timestamp        | YES  |     | NULL    |                |
++------------+------------------+------+-----+---------+----------------+
+6 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.01 sec)
+</div></code></pre>
+<p>mysql終了．</p>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-built_in">exit</span>;
+Bye
+</div></code></pre>
+<p>これでテーブルの設定は完了．</p>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%BE%E3%81%A8%E3%82%81">【参考】よく使うマイグレーションコマンドまとめ</h3>
+<p>マイグレーション実行</p>
+<pre class="hljs"><code><div>$ php artisan migrate
+</div></code></pre>
+<p>直前に実行したマイグレーションをロールバックする．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:rollback
+</div></code></pre>
+<p>全てロールバックしてからマイグレーションを再度実行する．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:refresh
+</div></code></pre>
+<p>全てのテーブルを削除して再度マイグレーションを実行する．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:fresh
+</div></code></pre>
+<p>マイグレーション状況を出力する．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:status
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A2-%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成③-モデルの作成</strong></h2>
+<h3 id="1-eloquent-model"><strong>1. Eloquent Model</strong></h3>
+<ul>
+<li>Eloquent ModelはLaravel標準のORM（object-relational mapper）である．</li>
+<li>ORMとは，DBのレコードをオブジェクトとして直感的に扱えるようにしたもので，SQLを意識せずにプログラムで処理を記述することができる．</li>
+<li>Eloquent Modelは定義された「model」を用いることで簡単にDBへのデータ保存・取得を行える．</li>
+<li>1つのモデルが1つのテーブルに対応する．例えば，<code>tasks</code>テーブルに対して<code>Task</code>のようにモデルを定義すると自動的に対応する．モデル内に明示的に対応を記述することもできる．</li>
+</ul>
+<h3 id="2-%E3%83%A2%E3%83%87%E3%83%AB%E4%BD%9C%E6%88%90%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89"><strong>2. モデル作成コマンド</strong></h3>
+<p>下記コマンドでモデルを作成する．</p>
+<pre class="hljs"><code><div>$ php artisan make:model モデル名
+</div></code></pre>
+<p>今回は「<code>tasks</code>」テーブルに対応する「<code>Task</code>」モデルを定義する．下記をターミナルで実行する．</p>
+<pre class="hljs"><code><div>$ php artisan make:model Task
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Model created successfully.
+</div></code></pre>
+<h3 id="3-%E3%83%A2%E3%83%87%E3%83%AB%E7%A2%BA%E8%AA%8D"><strong>3. モデル確認</strong></h3>
+<p><code>/app/Task.php</code>が作成される．
+内容は以下の通り．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Task</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">//</span>
+}
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A3-%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><strong>todo管理アプリの作成④-ルーティング</strong></h2>
+<h3 id="1-%E3%83%AB%E3%83%BC%E3%83%88%E3%81%A8%E3%81%AF"><strong>1. ルートとは</strong></h3>
+<p><code>https://******.c9users.io/</code>のURLドメインの最後の「<code>/</code>」がルートとなる．</p>
+<h3 id="2-%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><strong>2. ルーティング</strong></h3>
+<p>例：</p>
+<p><code>https://******.c9users.io/</code><br>
+<code>https://******.c9users.io/home</code><br>
+<code>https://******.c9users.io/login</code></p>
+<p>上の「<code>/</code>」と「<code>****</code>」がルーティングで指定できる場所．ルーティングは「<code>/</code>」以降の文字列を使用し，アプリケーションの処理と紐付ける．</p>
+<h3 id="3-%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><strong>3. 必要なルーティング</strong></h3>
+<p>今回はアプリケーションに必要な3つのルーティングを作成する．ルーティングは「ユーザがアクセスするURL」と「アプリケーションが実行する処理」を紐付かせる定義となる．</p>
+<ul>
+<li>タスクを追加する処理</li>
+<li>タスクを一覧表示する処理</li>
+<li>完了したタスクを削除する処理</li>
+</ul>
+<h3 id="4-%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90"><strong>4. ルーティングファイルの作成</strong></h3>
+<p>まずは処理が空のルーティングを作成する．実行される処理については後ほど作成する．</p>
+<p>ルーティングファイルは<code>/routes/web.php</code>で，内容は以下．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">'welcome'</span>);
+});
+</div></code></pre>
+<p>上記の記述は「<code>/</code>」にアクセスされたら「<code>welcome.blade.php</code>」ページを表示する，という意味となる．</p>
+<p>今回必要な3つの処理について，以下のように<code>/routes/web.php</code>を編集する．この状態では，アクセスされたURLに対して，何も処理が行われない状態となる．</p>
+<pre class="hljs"><code><div>&lt;?php
+<span class="hljs-addition">+use App\Task;</span>
+<span class="hljs-addition">+use Illuminate\Http\Request;</span>
+
+<span class="hljs-deletion">-Route::get('/', function () {</span>
+<span class="hljs-deletion">-    return view('welcome');</span>
+<span class="hljs-deletion">-});</span>
+
+// 表示処理の作成
+<span class="hljs-addition">+Route::get('/', function () {</span>
+<span class="hljs-addition">+    //</span>
+<span class="hljs-addition">+});</span>
+
+// 登録処理の作成
+<span class="hljs-addition">+Route::post('/tasks', function (Request $request) {</span>
+<span class="hljs-addition">+    //</span>
+<span class="hljs-addition">+});</span>
+
+// 削除処理の作成
+<span class="hljs-addition">+Route::post('/task/{task}', function (Task $task) {</span>
+<span class="hljs-addition">+    //</span>
+<span class="hljs-addition">+});</span>
+</div></code></pre>
+<h3 id="5-%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A8%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91"><strong>5. ルーティングとビューの関連付け</strong></h3>
+<p>次に「<code>/</code>」ルートの定義を完成させる．このルーティングでは，「新しいタスクを登録するフォーム」と「登録済みタスクの一覧」を組み込んだビューを指定する．</p>
+<p>ルート定義では「<code>return view('ファイル名')</code>」と記述することで指定したビューを表示する．</p>
+<p>以下のように<code>/routes/web.php</code>を編集する．</p>
+<pre class="hljs"><code><div>...
+// 表示処理の作成
+Route::get('/', function () {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   return view('tasks');</span>
+});
+...
+</div></code></pre>
+<p><code>view()</code>に引数として渡した<code>tasks</code>がファイル名となる．ここでは「<code>tasks.blade.php</code>」を表す．</p>
+<p>この段階では，ビューを作成していないのでブラウザで確認できないが，次項でビューを作成した後にブラウザで動作確認を行う．</p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A4-%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成⑤-ビューの作成</strong></h2>
+<ul>
+<li>今回のアプリケーションでは，「タスクを追加するためのフォーム」と「登録されたタスクの一覧」を表示するビューを作成する．</li>
+<li>Laravelではbootstrapを使用可能なため，デザインレイアウトはbootstrapのcssスタイルを使用する．</li>
+</ul>
+<h3 id="1-%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9"><strong>1. テンプレートの定義</strong></h3>
+<ul>
+<li>Laravelではテンプレートエンジン「bladeテンプレート」を使用する．</li>
+<li>bladeテンプレートは「ヘッダー」「フッター」「メニュー」などをパーツ化して共有利用できる．共有利用することで，編集するとどのページでも同時に更新することができる．</li>
+<li>webページでは上記のパーツはどのページでも共通して用いられることが多いため，テンプレートエンジンを使用することで効率的に開発を進めることができる．</li>
+<li>また，テンプレート内で<code>if</code>を用いた条件分岐や<code>for</code>を用いた繰り返し処理を行うこともできる．</li>
+<li>テンプレートを用いてビュー表示を行う際には，ファイル名に「<code>*****.blade.php</code>」の拡張子をつける．</li>
+</ul>
+<h3 id="2-%E3%83%93%E3%83%A5%E3%83%BC%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%A8%AD%E7%BD%AE%E5%A0%B4%E6%89%80"><strong>2. ビューファイルの設置場所</strong></h3>
+<ul>
+<li>Laravelのビューは全て「<code>resources/views</code>」配下に設置する．</li>
+<li>共通パーツのビューは「<code>resources/views</code>」の中に「<code>layouts</code>」ディレクトリを作成し，その中に「<code>app.blade.php</code>」を作成する．</li>
+<li>階層を含めたファイルパスは以下のようになる．</li>
+</ul>
+<pre class="hljs"><code><div>/resources/views/layouts/app.blade.php
+</div></code></pre>
+<h3 id="3-%E5%85%B1%E9%80%9A%E3%83%91%E3%83%BC%E3%83%84%E9%83%A8%E5%88%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>3. 共通パーツ部分の作成</strong></h3>
+<p><code>/resources/views</code>ディレクトリに<code>layouts</code>ディレクトリを作成し，<code>layouts</code>ディレクトリ内に<code>app.blade.php</code>ファイルを作成する．（作成した時点では空の状態）</p>
+<p>作成した<code>app.blade.php</code>の内容に以下を追記する．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Todo List<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- CSSとJavaScriptを追加する領域 --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar navbar-default"</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- ナビバーの内容 --&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        @yield('content')
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p><code>app.blade.php</code>が共通パーツとなり，上記<code>@yield('content')</code>の部分に各ページの内容が挿入される.</p>
+<p>続けて，メインコンテンツを表示するビューを作成する．</p>
+<h3 id="4-%E5%80%8B%E5%88%A5%E3%83%91%E3%83%BC%E3%83%84%E9%83%A8%E5%88%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>4. 個別パーツ部分の作成</strong></h3>
+<p>タスク追加フォームと登録済みタスク一覧を作成する．</p>
+<p><code>/resources/views</code>ディレクトリに<code>tasks.blade.php</code>ファイルを作成する．（作成した時点では空の状態）</p>
+<p>作成した<code>tasks.blade.php</code>の内容に以下を追記する．</p>
+<pre class="hljs"><code><div>@extends('layouts.app')
+@section('content')
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel-body"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- バリデーションエラーの表示に使用するエラーファイル--&gt;</span>
+        @include('common.errors')
+        <span class="hljs-comment">&lt;!-- タスク登録フォーム --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"{{ url('tasks') }}"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-horizontal"</span>&gt;</span>
+            {{ csrf_field() }}
+            <span class="hljs-comment">&lt;!-- タスク名 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-3 control-label"</span>&gt;</span>Task<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- タスク登録ボタン --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-offset-3 col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- この下に登録済みタスクリストを表示 --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+@endsection
+</div></code></pre>
+<p><code>@extends('layouts.app')</code>で共通パーツである<code>app.blade.php</code>を呼び出す．引数は<code>layouts/app.blade.php</code>と同義となる．</p>
+<p><code>@section('content')</code>から<code>@endsection</code>までの内容を<code>content</code>という名前で定義している．この<code>content</code>を<code>app.blade.php</code>の<code>@yield('content')</code>部分で呼び出している．</p>
+<p>また，記述内でエラーファイルを呼び出しているが，エラーファイルが未作成であるため，このままでは正しく表示されない状態である．</p>
+<h3 id="5-%E3%82%A8%E3%83%A9%E3%83%BC%E8%A1%A8%E7%A4%BA%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90"><strong>5. エラー表示テンプレートの作成</strong></h3>
+<p><code>/resources/views</code>ディレクトリに<code>common</code>ディレクトリを作成し，<code>common</code>ディレクトリ内に<code>errors.blade.php</code>ファイルを作成する．（作成した時点では空の状態）</p>
+<p>作成した<code>errors.blade.php</code>の内容に以下を追記する．</p>
+<pre class="hljs"><code><div>@if (count($errors) &gt; 0)
+    <span class="hljs-comment">&lt;!-- Form Error List --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"alert alert-danger"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>入力した文字を修正してください。<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                @foreach ($errors-&gt;all() as $error)
+                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{ $error }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                @endforeach
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+@endif
+</div></code></pre>
+<p><code>$error</code>変数はエラー発生時に使用され，どのファイルからも参照することができる．</p>
+<h3 id="6-%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E7%A2%BA%E8%AA%8D"><strong>6. ビューの確認</strong></h3>
+<p>必要なビューが全て揃ったので，ブラウザで表示を確認する．</p>
+<p>以下にアクセスする．</p>
+<pre class="hljs"><code><div>https://プロジェクト名-ユーザ名.c9users.io/
+</div></code></pre>
+<p>デザインを適用していないので，下記のようなシンプルなフォームが表示される．
+<img src="img/top-form.png" alt="フォーム配置"></p>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91blade%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E5%86%85%E3%81%AE%E5%A4%89%E6%95%B0%E8%A1%A8%E7%A4%BA"><strong>【参考】bladeテンプレート内の変数表示</strong></h3>
+<p>テンプレート内での変数は</p>
+<pre class="hljs"><code><div>{{ $変数名 }}
+</div></code></pre>
+<p>で記述できる．</p>
+<p>bladeテンプレート内で上記のように記述すると，XSS攻撃を防ぐためにPHPのエスケープ関数を自動的に実行する．</p>
+<p>エスケープしたくない場合は，</p>
+<pre class="hljs"><code><div>{{ !!$変数名!! }}
+</div></code></pre>
+<p>のように記述できるが，セキュリティを考慮すると<code>{{ $変数名 }}</code>の使用が望ましい．</p>
+<p>また，変数が存在しない場合に表示を切り分けることもできる．例えば，</p>
+<pre class="hljs"><code><div>{{ $name, <span class="hljs-string">'default'</span> }}
+</div></code></pre>
+<p>のように記述した場合，<code>$name</code>が存在すれば値が表示され，存在しない場合は<code>default</code>という文字列が表示される．</p>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91javascript-css%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E9%85%8D%E7%BD%AE%E5%A0%B4%E6%89%80"><strong>【参考】javascript, cssファイルの配置場所</strong></h3>
+<p>これらのファイルは<code>public/js</code>や<code>public/css</code>に配置する．</p>
+<p>例：<code>main.js</code>ファイルを作成した場合，配置すると下記のようになる．</p>
+<pre class="hljs"><code><div>public/js/main.js
+</div></code></pre>
+<p>参照には<code>asset()</code>関数を使用する．<code>asset()</code>関数は<code>public</code>以下を参照するため，以下のように記述する．</p>
+<p>例1：javascriptファイルを参照する場合．</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{asset('js/main.js')}}"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<p>例2：cssファイルを参照する場合</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{asset('css/style.css')}}"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A5-%E3%82%BF%E3%82%B9%E3%82%AF%E8%BF%BD%E5%8A%A0%E5%87%A6%E7%90%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成⑥-タスク追加処理の作成</strong></h2>
+<h3 id="%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%EF%BC%88%E5%85%A5%E5%8A%9B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%EF%BC%89%E3%81%A8%E7%99%BB%E9%8C%B2%E5%87%A6%E7%90%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>バリデーション（入力チェック）と登録処理の作成</strong></h3>
+<ul>
+<li>フォームに入力された値が正常な値かどうかバリデーション（チェック）する．</li>
+<li>ルーティングの「登録処理作成」部分に記述する．</li>
+<li>本体ルーティング部分で記述する内容ではないが，まず処理を全て記述し，その後に各役割分担を行う．</li>
+</ul>
+<p><code>/routes/web.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+//登録処理の作成
+Route::post('/tasks', function (Request $request) {
+<span class="hljs-deletion">-   //</span>
+    //バリデーション
+<span class="hljs-addition">+   $validator = Validator::make($request-&gt;all(), [</span>
+<span class="hljs-addition">+       'task' =&gt; 'required|max:255',</span>
+<span class="hljs-addition">+   ]);</span>
+    //バリデーション:エラー
+<span class="hljs-addition">+   if ($validator-&gt;fails()) {</span>
+<span class="hljs-addition">+       return redirect('/')</span>
+<span class="hljs-addition">+           -&gt;withInput()</span>
+<span class="hljs-addition">+           -&gt;withErrors($validator);</span>
+<span class="hljs-addition">+   }</span>
+    // Eloquentモデル
+<span class="hljs-addition">+   $task = new Task;</span>
+<span class="hljs-addition">+   $task-&gt;task = $request-&gt;task;</span>
+<span class="hljs-addition">+   $task-&gt;deadline = '2019-01-23';</span>
+<span class="hljs-addition">+   $task-&gt;comment = 'todo!';</span>
+<span class="hljs-addition">+   $task-&gt;save();</span>
+    //「/」ルートにリダイレクト
+<span class="hljs-addition">+   return redirect('/');</span>
+});
+...
+</div></code></pre>
+<h3 id="%E3%80%90%E8%A7%A3%E8%AA%AC%E3%80%91%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A"><strong>【解説】バリデーションの設定</strong></h3>
+<ul>
+<li>task（必須，255文字以内）<br>
+「<code>|</code>」を挟むことで複数の条件を指定可能．例えば「<code>required | min:3 | max:255</code>」のように記述できる．</li>
+<li>バリデーション失敗時（<code>if($validator-&gt;false()){...}</code>）<br>
+セッションに値を保存し，ユーザを「<code>/</code>」ルートにリダイレクトさせる．</li>
+</ul>
+<pre class="hljs"><code><div>redirect(<span class="hljs-string">'/'</span>)   <span class="hljs-comment">//ルートへリダイレクト</span>
+</div></code></pre>
+<pre class="hljs"><code><div>withInput()     <span class="hljs-comment">//セッションに値を保持</span>
+</div></code></pre>
+<h3 id="%E3%80%90%E8%A7%A3%E8%AA%AC%E3%80%91%E3%83%87%E3%83%BC%E3%82%BF%E7%99%BB%E9%8C%B2%E5%87%A6%E7%90%86"><strong>【解説】データ登録処理</strong></h3>
+<p>新しいタスクを登録するためにはEloquentモデル「<code>Task</code>」に対して値を代入した後，「<code>save()</code>」メソッドで保存する．</p>
+<p>保存後，「<code>return redirect('/')</code>」でルート画面へ遷移する．</p>
+<p>以下，登録して画面遷移する処理．</p>
+<pre class="hljs"><code><div>...
+$task = <span class="hljs-keyword">new</span> Task;
+$task-&gt;task = $request-&gt;task;
+$task-&gt;deadline = <span class="hljs-string">'2019-01-23'</span>;
+$task-&gt;comment = <span class="hljs-string">'todo!'</span>;
+$task-&gt;save();
+<span class="hljs-comment">//「/」ルートにリダイレクト</span>
+<span class="hljs-keyword">return</span> redirect(<span class="hljs-string">'/'</span>);
+...
+</div></code></pre>
+<p>上記コードでは，「<code>task</code>」は入力された値を受け取り，それ以外は固定の値となっている．</p>
+<p>後ほど，入力欄を追加し，処理を変更する．</p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A6-%E7%99%BB%E9%8C%B2%E6%B8%88%E3%81%BF%E3%82%BF%E3%82%B9%E3%82%AF%E4%B8%80%E8%A6%A7%E8%A1%A8%E7%A4%BA%E5%87%A6%E7%90%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成⑦-登録済みタスク一覧表示処理の作成</strong></h2>
+<h3 id="1-%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AE%E4%B8%80%E8%A6%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%EF%BC%8Cview%E3%81%B8%E5%A4%89%E6%95%B0%E3%81%A8%E3%81%97%E3%81%A6%E6%B8%A1%E3%81%99"><strong>1. タスクの一覧データを取得し，Viewへ変数として渡す</strong></h3>
+<p>「<code>/</code>」アクセス時に，<code>Task</code>モデルを参照して条件に合致したデータを受け取り，<code>view()</code>関数の第2引数に渡す．</p>
+<p><code>routes/web.app</code>を以下のように編集．レコードをdeadlineが古い順に並べかえて取得している．</p>
+<pre class="hljs"><code><div>...
+Route::get('/', function () {
+<span class="hljs-deletion">-   return view('tasks');</span>
+<span class="hljs-addition">+   $tasks = Task::orderBy('deadline', 'asc')-&gt;get();</span>
+<span class="hljs-addition">+   return view('tasks', [</span>
+<span class="hljs-addition">+       'tasks' =&gt; $tasks</span>
+<span class="hljs-addition">+   ]);</span>
+});
+...
+</div></code></pre>
+<p>Viewへ変数を渡せたので，この変数から必要なデータを取り出して表示する処理を作成する．</p>
+<h3 id="2-view%E3%81%8C%E5%8F%97%E3%81%91%E5%8F%96%E3%81%A3%E3%81%9F%E5%A4%89%E6%95%B0%E3%81%8B%E3%82%89%E5%BF%85%E8%A6%81%E3%81%AA%E5%80%A4%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%97%E3%81%A6%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B"><strong>2. Viewが受け取った変数から必要な値を取り出して表示する</strong></h3>
+<p><code>$tasks</code>は配列なので，<code>@foreach</code>を使用して<code>$tasks</code>の値を<code>$task</code>へ代入し，表示する．</p>
+<p><code>/resources/views/tasks.blade.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+&lt;/form&gt;
+&lt;!-- この下に登録済みタスクリストを表示 --&gt;
+<span class="hljs-addition">+&lt;!-- 表示領域 --&gt;</span>
+<span class="hljs-addition">+@if (count($tasks) &gt; 0)</span>
+<span class="hljs-addition">+   &lt;div class="panel panel-default"&gt;</span>
+<span class="hljs-addition">+       &lt;div class="panel-heading"&gt;タスクリスト&lt;/div&gt;</span>
+<span class="hljs-addition">+       &lt;div class="panel-body"&gt;</span>
+<span class="hljs-addition">+           &lt;table class="table table-striped task-table"&gt;</span>
+<span class="hljs-addition">+               &lt;!-- テーブルヘッダ --&gt;</span>
+<span class="hljs-addition">+               &lt;thead&gt;</span>
+<span class="hljs-addition">+                   &lt;th&gt;タスク&lt;/th&gt;</span>
+<span class="hljs-addition">+                   &lt;th&gt;&amp;nbsp;&lt;/th&gt;</span>
+<span class="hljs-addition">+               &lt;/thead&gt;</span>
+<span class="hljs-addition">+               &lt;!-- テーブル本体 --&gt;</span>
+<span class="hljs-addition">+               &lt;tbody&gt;</span>
+<span class="hljs-addition">+                   @foreach ($tasks as $task)</span>
+<span class="hljs-addition">+                       &lt;tr&gt;</span>
+<span class="hljs-addition">+                           &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+                               &lt;div&gt;{{ $task-&gt;task }}&lt;/div&gt;</span>
+<span class="hljs-addition">+                           &lt;/td&gt;</span>
+<span class="hljs-addition">+                           &lt;td&gt;</span>
+<span class="hljs-addition">+                               &lt;!-- 削除ボタン --&gt;</span>
+<span class="hljs-addition">+                           &lt;/td&gt;</span>
+<span class="hljs-addition">+                       &lt;/tr&gt;</span>
+<span class="hljs-addition">+                   @endforeach</span>
+<span class="hljs-addition">+               &lt;/tbody&gt;</span>
+<span class="hljs-addition">+           &lt;/table&gt;</span>
+<span class="hljs-addition">+       &lt;/div&gt;</span>
+<span class="hljs-addition">+   &lt;/div&gt;</span>
+<span class="hljs-addition">+@endif</span>
+<span class="hljs-addition">+&lt;!-- ここまでタスクリスト --&gt;</span>
+&lt;/div&gt;
+@endsection
+</div></code></pre>
+<p>ブラウザで表示すると，下記のように登録済みタスクが表示される．input欄に入力してsavaボタンを押下するとリストに追加される様子が確認できる．</p>
+<p><img src="img/top-list.png" alt="リスト表示"></p>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91blade%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87"><strong>【参考】Bladeテンプレートの制御構文</strong></h3>
+<p>分岐処理</p>
+<pre class="hljs"><code><div>@<span class="hljs-keyword">if</span> (count($tasks) === <span class="hljs-number">1</span>)
+    タスク<span class="hljs-number">1</span>件あり！
+@<span class="hljs-keyword">endif</span>
+</div></code></pre>
+<p>多分岐処理</p>
+<pre class="hljs"><code><div>@<span class="hljs-keyword">if</span> (count($tasks) === <span class="hljs-number">1</span>)
+    &lt;p&gt;タスク<span class="hljs-number">1</span>件あり！&lt;/p&gt;
+@<span class="hljs-keyword">elseif</span> (count($tasks) &gt; <span class="hljs-number">2</span>)
+    &lt;p&gt;タスク<span class="hljs-number">2</span>件以上あり！&lt;/p&gt;
+@<span class="hljs-keyword">else</span>
+    &lt;p&gt;全て完了済み！&lt;/p&gt;
+@<span class="hljs-keyword">endif</span>
+</div></code></pre>
+<p>繰り返し処理</p>
+<pre class="hljs"><code><div>@<span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i&lt;<span class="hljs-number">10</span>; $i++)
+    &lt;p&gt;現在のカウント: {{ $i }} &lt;/p&gt;
+@<span class="hljs-keyword">endfor</span>
+</div></code></pre>
+<p>繰り返し処理（配列など）</p>
+<pre class="hljs"><code><div>@<span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user)
+    &lt;p&gt;ユーザ名 {{ $user-&gt;name }} &lt;/p&gt;
+@<span class="hljs-keyword">endforeach</span>
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A7-%E5%AE%8C%E4%BA%86%E3%81%97%E3%81%9F%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AE%E5%89%8A%E9%99%A4%E5%87%A6%E7%90%86%E3%82%92%E4%BD%9C%E6%88%90"><strong>todo管理アプリの作成⑧-完了したタスクの削除処理を作成</strong></h2>
+<h3 id="1-%E5%89%8A%E9%99%A4%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%AE%E8%BF%BD%E5%8A%A0"><strong>1. 削除ボタンの追加</strong></h3>
+<ul>
+<li>これまでに作成したビューの中に，削除ボタンを追加する．</li>
+<li>削除ボタンクリック時に，POSTリクエストを送信し，該当するデータをDBから削除する処理を実行する．</li>
+</ul>
+<p><code>/resources/views/tasks.blade.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+&lt;!-- テーブル本体 --&gt;
+&lt;tbody&gt;
+    @foreach ($tasks as $task)
+        &lt;tr&gt;
+            &lt;td class="table-text"&gt;
+                &lt;div&gt;{{ $task-&gt;task }}&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;!-- 削除ボタン --&gt;
+<span class="hljs-addition">+               &lt;form action="{{ url('task/'.$task-&gt;id) }}" method="POST"&gt;</span>
+<span class="hljs-addition">+               {{ csrf_field() }}</span>
+<span class="hljs-addition">+                   &lt;button type="submit" class="btn btn-danger"&gt;削除&lt;/button&gt;</span>
+<span class="hljs-addition">+               &lt;/form&gt;</span>
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    @endforeach
+&lt;/tbody&gt;
+...
+</div></code></pre>
+<p>ブラウザで表示すると，各タスクに対して削除ボタンが追加されていることが確認できる．</p>
+<p><img src="img/top-delete-btn.png" alt="削除ボタン"></p>
+<h3 id="%E3%80%90%E8%A7%A3%E8%AA%AC%E3%80%91csrf"><strong>【解説】CSRF</strong></h3>
+<pre class="hljs"><code><div>{{ csrf_field() }}
+</div></code></pre>
+<ul>
+<li>「CSRF」とはハッキング手法の一つ．</li>
+<li>プログラムが人間に成り代わり，悪意ある情報を入力・送信する手法．</li>
+<li>LaravelにはCSRFからユーザを保護する関数が用意されており，基本的にログイン後のフォームなどに記述することが推奨されている．</li>
+<li>今回のケースでは，悪意あるプログラムにユーザの登録したタスクを勝手に削除させないために記述している．</li>
+</ul>
+<h3 id="2-%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AE%E5%89%8A%E9%99%A4%E5%87%A6%E7%90%86%E3%82%92%E8%BF%BD%E5%8A%A0"><strong>2. タスクの削除処理を追加</strong></h3>
+<p>ビューで表示した削除ボタンをクリックした際に実行される削除処理を追加する．</p>
+<p><code>/routes/web.php</code>を以下のように編集する．削除の処理を実行した後は，一覧画面にリダイレクトする．</p>
+<pre class="hljs"><code><div>...
+// 削除処理の作成
+Route::post('/task/{task}', function (Task $task) {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   $task-&gt;delete();</span>
+<span class="hljs-addition">+   return redirect('/');</span>
+});
+</div></code></pre>
+<p>ブラウザで削除ボタンをクリックすると，表示されたタスクが削除される様子を確認できる．</p>
+<p><img src="img/top-delete.png" alt="削除処理"></p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A8-bootstrap%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B"><strong>todo管理アプリの作成⑨-bootstrapを用いてデザインを整える</strong></h2>
+<h3 id="1-bootstrap%EF%BC%88css%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%EF%BC%89%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><strong>1. bootstrap（CSSフレームワーク）を読み込む</strong></h3>
+<p>下記のURLにアクセスする．<br>
+<a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/">https://getbootstrap.com/docs/4.1/getting-started/introduction/</a></p>
+<p>「Bootstrap CDN」以下のコード（以下の画像部分）をコピーする．cssとjsの両方コピー．
+<img src="img/bootstrap.png" alt="bootstrap"></p>
+<h3 id="2-bootstrap%E3%82%92view%E3%81%AB%E7%B5%84%E3%81%BF%E8%BE%BC%E3%82%80"><strong>2. bootstrapをViewに組み込む</strong></h3>
+<p><code>/resources/views/layouts/app.blade.php</code>にコピーしたコードを貼り付ける．</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Todo List&lt;/title&gt;
+        &lt;!-- CSSとJavaScriptを追加する領域 --&gt;
+<span class="hljs-addition">+       &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"&gt;</span>
+<span class="hljs-addition">+       &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;</span>
+<span class="hljs-addition">+       &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"&gt;&lt;/script&gt;</span>
+<span class="hljs-addition">+       &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"&gt;&lt;/script&gt;</span>
+    &lt;/head&gt;
+...
+</div></code></pre>
+<p>ブラウザで表示すると，以下のようにデザインが整っている状態が確認できる．</p>
+<p><img src="img/top-bootstrap.png" alt="bootstrap適用"></p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%A9-%E7%99%BB%E9%8C%B2%E5%87%A6%E7%90%86%E3%81%AE%E8%BF%BD%E5%8A%A0"><strong>todo管理アプリの作成⑩-登録処理の追加</strong></h2>
+<h3 id="1-%E3%82%BF%E3%82%B9%E3%82%AF%E5%90%8D%E4%BB%A5%E5%A4%96%E3%81%AE%E5%85%A5%E5%8A%9B%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><strong>1. タスク名以外の入力フォームを追加する</strong></h3>
+<ul>
+<li>現状ではタスク名のみを入力し，他の項目は固定された値を登録している．</li>
+<li>「deadline」と「comment」の入力欄を追加し，全ての項目を入力できるようにする．</li>
+</ul>
+<p><code>/resources/views/tasks.blade.php</code>を以下のように編集する．タスク名と同様の形式だが，name属性を正しく設定するよう注意．</p>
+<pre class="hljs"><code><div>...
+&lt;!-- タスク登録フォーム --&gt;
+&lt;form action="{{ url('tasks') }}" method="POST" class="form-horizontal"&gt;
+    {{ csrf_field() }}
+    &lt;!-- タスク名 --&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-sm-6"&gt;
+            &lt;label for="task" class="col-sm-3 control-label"&gt;Task&lt;/label&gt;
+            &lt;input type="text" name="task" id="task" class="form-control"&gt;
+        &lt;/div&gt;
+<span class="hljs-addition">+       &lt;!-- deadline --&gt;</span>
+<span class="hljs-addition">+       &lt;div class="col-sm-6"&gt;</span>
+<span class="hljs-addition">+           &lt;label for="deadline" class="col-sm-3 control-label"&gt;Deadline&lt;/label&gt;</span>
+<span class="hljs-addition">+           &lt;input type="date" name="deadline" id="deadline" class="form-control"&gt;</span>
+<span class="hljs-addition">+       &lt;/div&gt;</span>
+<span class="hljs-addition">+       &lt;!-- comment --&gt;</span>
+<span class="hljs-addition">+       &lt;div class="col-sm-6"&gt;</span>
+<span class="hljs-addition">+           &lt;label for="comment" class="col-sm-3 control-label"&gt;Comment&lt;/label&gt;</span>
+<span class="hljs-addition">+           &lt;input type="text" name="comment" id="comment" class="form-control"&gt;</span>
+<span class="hljs-addition">+       &lt;/div&gt;</span>
+    &lt;/div&gt;
+    &lt;!-- タスク登録ボタン --&gt;
+    ...
+</div></code></pre>
+<p>ブラウザで表示すると以下の通り入力欄が追加されていることが確認できる．</p>
+<p><img src="img/top-input-all.png" alt="入力欄追加"></p>
+<h3 id="2-%E3%83%87%E3%83%BC%E3%82%BF%E8%A1%A8%E7%A4%BA%E6%AC%84%E3%81%AE%E8%BF%BD%E5%8A%A0"><strong>2. データ表示欄の追加</strong></h3>
+<ul>
+<li>タスク名以外の「deadline」「comment」についても一覧に表示されるよう変更する．</li>
+<li><code>$task</code>に1レコードの全てのデータが含まれるため，<code>$task-&gt;deadline</code>のように各データを取り出すことができる．</li>
+<li>後ほど使用する更新ボタンも合わせて追加する．</li>
+<li>更新ボタンには更新ページへのデータ送信も記述する．更新ページは「<code>tasksedit/id</code>」とする．</li>
+</ul>
+<p><code>/resources/views/tasks.blade.php</code>を以下のように編集する．タスク名の表示と同様の形式で，deadlineとcommentを表示する要素を作成している．</p>
+<pre class="hljs"><code><div>...
+@foreach ($tasks as $task)
+    &lt;tr&gt;
+        &lt;td class="table-text"&gt;
+            &lt;div&gt;{{ $task-&gt;task }}&lt;/div&gt;
+        &lt;/td&gt;
+<span class="hljs-addition">+       &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+           &lt;div&gt;{{ $task-&gt;deadline }}&lt;/div&gt;</span>
+<span class="hljs-addition">+       &lt;/td&gt;</span>
+<span class="hljs-addition">+       &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+           &lt;div&gt;{{ $task-&gt;comment }}&lt;/div&gt;</span>
+<span class="hljs-addition">+       &lt;/td&gt;</span>
+<span class="hljs-addition">+       &lt;td&gt;</span>
+<span class="hljs-addition">+           &lt;!-- 更新ボタン --&gt;</span>
+<span class="hljs-addition">+           &lt;form action="{{ url('tasksedit/'.$task-&gt;id) }}" method="POST"&gt;</span>
+<span class="hljs-addition">+               {{ csrf_field() }}</span>
+<span class="hljs-addition">+               &lt;button type="submit" class="btn btn-primary"&gt;更新&lt;/button&gt;</span>
+<span class="hljs-addition">+           &lt;/form&gt;</span>
+<span class="hljs-addition">+       &lt;/td&gt;</span>
+        &lt;td&gt;
+            &lt;!-- 削除ボタン --&gt;
+            &lt;form action="{{ url('task/'.$task-&gt;id) }}" method="POST"&gt;
+            {{ csrf_field() }}
+                &lt;button type="submit" class="btn btn-danger"&gt;削除&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+@endforeach
+...
+</div></code></pre>
+<p>ブラウザで表示すると，項目が追加されていることが確認できる．</p>
+<p><img src="img/top-show-all.png" alt="表示項目追加"></p>
+<h3 id="3-%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E7%99%BB%E9%8C%B2%E5%87%A6%E7%90%86%E3%81%AE%E8%BF%BD%E5%8A%A0"><strong>3. バリデーションと登録処理の追加</strong></h3>
+<ul>
+<li>入力欄を増やしたので，登録時の処理に反映させる．</li>
+<li>deadlineが入力されていない場合にエラーを出す．</li>
+<li>これまで固定値で送信していた各データについて，入力された値を送信するよう処理を変更する．</li>
+<li><code>$request</code>に送信データが全て含まれるため，<code>$request-&gt;deadline</code>のようにそれぞれの値を取り出すことができる．</li>
+</ul>
+<p><code>/routes/web.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>// 登録処理の作成
+Route::post('/tasks', function (Request $request) {
+    //バリデーション
+    $validator = Validator::make($request-&gt;all(), [
+        'task' =&gt; 'required|max:255',
+<span class="hljs-addition">+       'deadline' =&gt; 'required'</span>
+    ]);
+    //バリデーション:エラー
+    if ($validator-&gt;fails()) {
+        return redirect('/')
+            -&gt;withInput()
+            -&gt;withErrors($validator);
+    }
+    // Eloquentモデル
+    $task = new Task;
+    $task-&gt;task = $request-&gt;task;
+<span class="hljs-deletion">-   $task-&gt;deadline = '2019-01-23';</span>
+<span class="hljs-addition">+   $task-&gt;deadline = $request-&gt;deadline;</span>
+<span class="hljs-deletion">-   $task-&gt;comment = 'todo!';</span>
+<span class="hljs-addition">+   $task-&gt;comment = $request-&gt;comment;</span>
+    $task-&gt;save();
+    //「/」ルートにリダイレクト
+    return redirect('/');
+});
+</div></code></pre>
+<p>ブラウザで表示して入力→送信すると，入力した内容が反映されていることが確認できる．</p>
+<p><img src="img/top-store-all.png" alt="登録処理完成"></p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%AA-%E6%9B%B4%E6%96%B0%E5%87%A6%E7%90%86%E3%81%AE%E8%BF%BD%E5%8A%A0"><strong>todo管理アプリの作成⑪-更新処理の追加</strong></h2>
+<ul>
+<li>データ表示欄を追加した際に，更新ボタンも合わせて作成した．</li>
+<li>URLを<code>tasksedit/id</code>に設定したので，更新画面と更新処理を作成する．</li>
+</ul>
+<h3 id="1-%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9A%E7%BE%A9"><strong>1. ルーティングの定義</strong></h3>
+<p><code>/routes/web.php</code>を以下のように編集（追記）する．</p>
+<pre class="hljs"><code><div>...
+//ここまで削除処理
+
+<span class="hljs-addition">+//更新画面</span>
+<span class="hljs-addition">+Route::post('/tasksedit/{task}', function(Task $task) {</span>
+<span class="hljs-addition">+   //{task}id 値を取得 =&gt; Task $task id 値の1レコード取得</span>
+<span class="hljs-addition">+   return view('tasksedit', ['task' =&gt; $task]);</span>
+<span class="hljs-addition">+});</span>
+</div></code></pre>
+<p>上記の<code>tasksedit</code>はアドレスで，<code>{task}</code>はidを取得する．<br>
+<code>Task $task</code>はTaskモデルを指定して引数に<code>$task</code>を指定することで，idが等しい1レコードを取得する．</p>
+<p><code>tasksedit/id名</code>のURLにアクセスされると，id名が一致する1レコードを取得して更新ページに渡す．<br>
+更新ページでは，<code>$task-&gt;id</code>や<code>$task-&gt;deadline</code>のように各データを取り出すことができる．</p>
+<h3 id="2-%E6%9B%B4%E6%96%B0%E7%94%BB%E9%9D%A2%E3%81%AE%E4%BD%9C%E6%88%90"><strong>2. 更新画面の作成</strong></h3>
+<p><code>/resources/views</code>のディレクトリに<code>tasksedit.blade.php</code>を作成する．</p>
+<p><code>tasksedit.blade.php</code>は空なので，以下を追加する．更新処理のURLは<code>tasks/update</code>とする</p>
+<pre class="hljs"><code><div>@extends('layouts.app')
+@section('content')
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12"</span>&gt;</span>
+        @include('common.errors')
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"{{ url('tasks/update') }}"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- task --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"task"</span>&gt;</span>Task<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{$task-&gt;task}}"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- deadline --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"deadline"</span>&gt;</span>Deadline<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"deadline"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"deadline"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{$task-&gt;deadline}}"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- comment --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"comment"</span>&gt;</span>Comment<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"comment"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"comment"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{$task-&gt;comment}}"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- Saveボタン/Backボタン --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"well well-sm"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-link pull-right"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ url('/') }}"</span>&gt;</span>Back<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- id値を送信 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{$task-&gt;id}}"</span> /&gt;</span>
+            {{ csrf_field() }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+@endsection
+</div></code></pre>
+<p>ブラウザで更新ボタンをクリックすると，更新画面に遷移する．それぞれのinput欄に，登録されたデータが表示されていればOK．</p>
+<p><img src="img/edit.png" alt="更新画面"></p>
+<h3 id="3-%E6%9B%B4%E6%96%B0%E5%87%A6%E7%90%86%E3%81%AE%E4%BD%9C%E6%88%90"><strong>3. 更新処理の作成</strong></h3>
+<p>更新画面からデータが送られた際に，DBに保存してある該当データを更新する処理を作成する．</p>
+<p><code>/routes/web.php</code>を以下のように編集（追記）する．</p>
+<pre class="hljs"><code><div>//更新画面
+Route::post('/tasksedit/{task}', function(Task $task) {
+    return view('tasksedit', ['task' =&gt; $task]);
+});
+
+<span class="hljs-addition">+//更新処理</span>
+<span class="hljs-addition">+Route::post('/tasks/update', function(Request $request){</span>
+<span class="hljs-addition">+   //バリデーション</span>
+<span class="hljs-addition">+   $validator = Validator::make($request-&gt;all(), [</span>
+<span class="hljs-addition">+       'id' =&gt; 'required',</span>
+<span class="hljs-addition">+       'task' =&gt; 'required|max:255',</span>
+<span class="hljs-addition">+       'deadline' =&gt; 'required'</span>
+<span class="hljs-addition">+   ]);</span>
+<span class="hljs-addition">+   //バリデーション:エラー</span>
+<span class="hljs-addition">+   if ($validator-&gt;fails()) {</span>
+<span class="hljs-addition">+       return redirect('/')</span>
+<span class="hljs-addition">+           -&gt;withInput()</span>
+<span class="hljs-addition">+           -&gt;withErrors($validator);</span>
+<span class="hljs-addition">+   }</span>
+<span class="hljs-addition">+   //データ更新処理</span>
+<span class="hljs-addition">+   $task = Task::find($request-&gt;id);</span>
+<span class="hljs-addition">+   $task-&gt;task   = $request-&gt;task;</span>
+<span class="hljs-addition">+   $task-&gt;deadline = $request-&gt;deadline;</span>
+<span class="hljs-addition">+   $task-&gt;comment = $request-&gt;comment;</span>
+<span class="hljs-addition">+   $task-&gt;save();</span>
+<span class="hljs-addition">+   return redirect('/');</span>
+<span class="hljs-addition">+});</span>
+
+</div></code></pre>
+<p>ブラウザで更新ボタン→更新画面で変更→saveすると一覧画面で情報が更新されていることが確認できる．</p>
+<p><img src="img/update.png" alt="更新画面"></p>
+<div style="page-break-before:always"></div>
+<h2 id="todo%E7%AE%A1%E7%90%86%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90%E2%91%AB-mnc%E3%81%AE%E5%BD%B9%E5%89%B2%E5%88%86%E6%8B%85"><strong>todo管理アプリの作成⑫-MNCの役割分担</strong></h2>
+<ul>
+<li>これまでの内容では，<code>/routes/web.php</code>に各処理を記述していた．</li>
+<li>各部分で役割分担することで，視認性やメンテナンス性がよくなるため，コードの場所を移動する．</li>
+</ul>
+<h3 id="1-controller%E3%81%AE%E4%BD%9C%E6%88%90"><strong>1. Controllerの作成</strong></h3>
+<p>まずは，実際の処理を行うControllerを作成する．「<code>TasksController</code>」という名前のコントローラファイルを作成する．</p>
+<p>ターミナルで以下を実行する．作業ディレクトリが「<code>/cms</code>」であることを必ず確認すること．</p>
+<pre class="hljs"><code><div>$ php artisan make:controller TasksController
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Controller created successfully.
+</div></code></pre>
+<p><code>/app/Http/Controllers/TasksController.php</code>が作成されていることを確認する．内容は以下の通り．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TasksController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-comment">//</span>
+}
+</div></code></pre>
+<p>このままではこれまでに作成したモデル（Task）を読み込めないので，以下のように編集する．以降の作業で，これまで作成した各処理をコントローラファイルへ移動させる．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+<span class="hljs-addition">+use App\Task;</span>
+<span class="hljs-addition">+use Validator;</span>
+
+class TasksController extends Controller
+{
+    //
+}
+</div></code></pre>
+<h3 id="2-%E5%90%84%E5%87%A6%E7%90%86%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%99%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90"><strong>2. 各処理に対応する関数の作成</strong></h3>
+<ul>
+<li>現状の記述（web.php）では，直接各処理を記述している．</li>
+<li>Controllerに移動する際には，それぞれの処理を関数として定義し，ルーティングから呼び出す形にする．</li>
+<li>処理を移動する前に，それぞれの処理の関数を作成しておく．</li>
+<li>対象の処理は「登録処理」「表示処理」「更新画面への遷移」「更新処理」「削除処理」の5つ．</li>
+</ul>
+<p><code>/app/Http/Controllers/TasksController.php</code>を以下のように編集（追記）する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Task;
+use Validator;
+
+class TasksController extends Controller
+{
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   //登録処理関数</span>
+<span class="hljs-addition">+   public function store(Request $request) {</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   //表示処理関数</span>
+<span class="hljs-addition">+   public function index() {</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   //更新画面表示関数</span>
+<span class="hljs-addition">+   public function edit(Task $task) {</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   //更新処理関数</span>
+<span class="hljs-addition">+   public function update(Request $request) {</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   //削除処理関数</span>
+<span class="hljs-addition">+   public function destroy(Task $task) {</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+}
+</div></code></pre>
+<h3 id="3-%E5%90%84%E5%87%A6%E7%90%86%E3%82%92controller%E3%81%AB%E7%A7%BB%E5%8B%95"><strong>3. 各処理をControllerに移動</strong></h3>
+<ul>
+<li><code>/routes/web.php</code>の処理を<code>/app/Http/Controllers/TasksController.php</code>に移動させる．</li>
+<li>上で定義した関数の中に対応する処理を移動すればOK.</li>
+</ul>
+<p><code>/app/Http/Controllers/TasksController.php</code>に移動させると以下のようになる．</p>
+<p>登録処理部分（store関数）</p>
+<pre class="hljs"><code><div>...
+//登録処理関数
+public function store(Request $request) {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   //バリデーション</span>
+<span class="hljs-addition">+   $validator = Validator::make($request-&gt;all(), [</span>
+<span class="hljs-addition">+       'task' =&gt; 'required|max:255',</span>
+<span class="hljs-addition">+       'deadline' =&gt; 'required'</span>
+<span class="hljs-addition">+   ]);</span>
+<span class="hljs-addition">+   //バリデーション:エラー</span>
+<span class="hljs-addition">+   if ($validator-&gt;fails()) {</span>
+<span class="hljs-addition">+       return redirect('/')</span>
+<span class="hljs-addition">+           -&gt;withInput()</span>
+<span class="hljs-addition">+           -&gt;withErrors($validator);</span>
+<span class="hljs-addition">+   }</span>
+<span class="hljs-addition">+   // Eloquentモデル</span>
+<span class="hljs-addition">+   $task = new Task;</span>
+<span class="hljs-addition">+   $task-&gt;task = $request-&gt;task;</span>
+<span class="hljs-addition">+   $task-&gt;deadline = $request-&gt;deadline;</span>
+<span class="hljs-addition">+   $task-&gt;comment = $request-&gt;comment;</span>
+<span class="hljs-addition">+   $task-&gt;save();</span>
+<span class="hljs-addition">+   //「/」ルートにリダイレクト</span>
+<span class="hljs-addition">+   return redirect('/');</span>
+}
+...
+</div></code></pre>
+<p>表示処理部分（index関数）</p>
+<pre class="hljs"><code><div>//表示処理関数
+public function index() {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   $tasks = Task::orderBy('deadline', 'asc')-&gt;get();</span>
+<span class="hljs-addition">+   return view('tasks', [</span>
+<span class="hljs-addition">+       'tasks' =&gt; $tasks</span>
+<span class="hljs-addition">+   ]);</span>
+}
+</div></code></pre>
+<p>更新画面遷移部分（edit関数）</p>
+<pre class="hljs"><code><div>...
+//更新画面表示関数
+public function edit(Task $task) {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   return view('tasksedit', ['task' =&gt; $task]);</span>
+}
+...
+</div></code></pre>
+<p>更新処理部分（update関数）</p>
+<pre class="hljs"><code><div>...
+public function update(Request $request) {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   //バリデーション</span>
+<span class="hljs-addition">+   $validator = Validator::make($request-&gt;all(), [</span>
+<span class="hljs-addition">+       'id' =&gt; 'required',</span>
+<span class="hljs-addition">+       'task' =&gt; 'required|max:255',</span>
+<span class="hljs-addition">+       'deadline' =&gt; 'required'</span>
+<span class="hljs-addition">+   ]);</span>
+<span class="hljs-addition">+   //バリデーション:エラー</span>
+<span class="hljs-addition">+   if ($validator-&gt;fails()) {</span>
+<span class="hljs-addition">+       return redirect('/')</span>
+<span class="hljs-addition">+           -&gt;withInput()</span>
+<span class="hljs-addition">+           -&gt;withErrors($validator);</span>
+<span class="hljs-addition">+   }</span>
+<span class="hljs-addition">+   //データ更新処理</span>
+<span class="hljs-addition">+   $task = Task::find($request-&gt;id);</span>
+<span class="hljs-addition">+   $task-&gt;task   = $request-&gt;task;</span>
+<span class="hljs-addition">+   $task-&gt;deadline = $request-&gt;deadline;</span>
+<span class="hljs-addition">+   $task-&gt;comment = $request-&gt;comment;</span>
+<span class="hljs-addition">+   $task-&gt;save();</span>
+<span class="hljs-addition">+   return redirect('/');</span>
+}
+...
+</div></code></pre>
+<p>削除処理部分（destroy関数）</p>
+<pre class="hljs"><code><div>...
+//削除処理関数
+public function destroy(Task $task) {
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   $task-&gt;delete();</span>
+<span class="hljs-addition">+   return redirect('/');</span>
+}
+...
+</div></code></pre>
+<p>もともと処理を記述していた<code>/routes/web.php</code>では，各URLのリクエストに応じて，<code>/app/Http/Controllers/TasksController.php</code>に定義した各関数を呼び出すように記述を変更する．呼び出し方は以下の通り．</p>
+<pre class="hljs"><code><div>Route::get(<span class="hljs-string">'URL'</span>, <span class="hljs-string">'コントローラ名@関数名'</span>);
+</div></code></pre>
+<p><code>/routes/web.php</code>を以下のように編集する．もともと記述してあった処理の詳細な記述は省略している．</p>
+<pre class="hljs"><code><div>&lt;?php
+use App\Task;
+use Illuminate\Http\Request;
+
+// 表示処理
+<span class="hljs-deletion">-Route::get('/', function () {</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-});</span>
+<span class="hljs-addition">+Route::get('/', 'TasksController@index');</span>
+
+// 登録処理
+<span class="hljs-deletion">-Route::post('/tasks', function (Request $request) {</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-});</span>
+<span class="hljs-addition">+Route::post('/tasks', 'TasksController@store');</span>
+
+// 削除処理
+<span class="hljs-deletion">-Route::post('/task/{task}', function (Task $task) {</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-});</span>
+<span class="hljs-addition">+Route::post('/task/{task}', 'TasksController@destroy');</span>
+
+//更新画面
+<span class="hljs-deletion">-Route::post('/tasksedit/{task}', function(Task $task) {</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-});</span>
+<span class="hljs-addition">+Route::post('/tasksedit/{task}', 'TasksController@edit');</span>
+
+//更新処理
+<span class="hljs-deletion">-Route::post('/tasks/update', function(Request $request){</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-});</span>
+<span class="hljs-addition">+Route::post('/tasks/update', 'TasksController@update');</span>
+</div></code></pre>
+<p>完成すると<code>/routes/web.php</code>が以下のようにスッキリする．リクエストURLに応じて処理を振り分けているだけの状態になっていることがわかる．</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Task</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+
+<span class="hljs-comment">// 表示処理</span>
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-string">'TasksController@index'</span>);
+
+<span class="hljs-comment">// 登録処理</span>
+Route::post(<span class="hljs-string">'/tasks'</span>, <span class="hljs-string">'TasksController@store'</span>);
+
+<span class="hljs-comment">// 削除処理</span>
+Route::post(<span class="hljs-string">'/task/{task}'</span>, <span class="hljs-string">'TasksController@destroy'</span>);
+
+<span class="hljs-comment">//更新画面</span>
+Route::post(<span class="hljs-string">'/tasksedit/{task}'</span>, <span class="hljs-string">'TasksController@edit'</span>);
+
+<span class="hljs-comment">//更新処理</span>
+Route::post(<span class="hljs-string">'/tasks/update'</span>, <span class="hljs-string">'TasksController@update'</span>);
+</div></code></pre>
+<p>ここまでで，基本となる「登録」「表示」「更新」「削除」の処理は完了となる．実際に各処理を実行して動作を確認しよう！</p>
+<div style="page-break-before:always"></div>
+<h2 id="%E8%BF%BD%E5%8A%A0%E6%A9%9F%E8%83%BD%E5%AE%9F%E8%A3%85%E2%91%A0-%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E5%87%A6%E7%90%86"><strong>追加機能実装①-ログイン処理</strong></h2>
+<ul>
+<li>ここまでの内容で基本的なCRUD操作の処理を実装した．</li>
+<li>ここでは，より実践的なwebサービスの形にするため，ユーザのログイン認証機能を実装する．</li>
+</ul>
+<h3 id="1-%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E8%AA%8D%E8%A8%BC%E6%A9%9F%E8%83%BD%E3%82%92%E8%A8%AD%E7%BD%AE"><strong>1. ログイン認証機能を設置</strong></h3>
+<p>ターミナルで以下を実行．作業ディレクトリが「<code>/cms</code>」であることを確認すること．以降のターミナル操作も同様．</p>
+<pre class="hljs"><code><div>$ php artisan make:auth
+</div></code></pre>
+<p>実行結果．yesで進める．（訊かれる数が多い場合でも全てyesでOK）</p>
+<pre class="hljs"><code><div> The [layouts/app.blade.php] view already exists. Do you want to replace it? (yes/no) [no]:
+ &gt; yes
+
+Authentication scaffolding generated successfully.
+</div></code></pre>
+<h3 id="2-%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E8%AA%8D%E8%A8%BC%E5%BE%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90"><strong>2. ログイン認証後のデータテーブルの作成</strong></h3>
+<p>ターミナルで以下を実行．（特に変化ない場合もあるがそのまま進めてOK．）</p>
+<pre class="hljs"><code><div>$ php artisan migrate
+</div></code></pre>
+<p><code>/routes/web.php</code>に以下の2行が追加されていることを確認する．（最下部に追加される）</p>
+<pre class="hljs"><code><div>Auth::routes();
+
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>);
+</div></code></pre>
+<p><code>/app/Http/Controllers/HomeController.php</code>が作成されていることを確認する．内容は以下．（コメント部分は省略）</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'home'</span>);
+    }
+}
+</div></code></pre>
+<p>上記の「<code>__construct()</code>」はクラス呼び出し時に自動で最初に実行される．「<code>$this-&gt;middleware('auth');</code>」は認証している場合に表示する，という意味で，この1行をコメントアウトすると認証状態に関わらず表示される．</p>
+<h3 id="3-%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E8%AA%8D%E8%A8%BC%E6%A9%9F%E8%83%BD%E3%81%AE%E7%8A%B6%E6%B3%81%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B"><strong>3. ログイン認証機能の状況を確認する</strong></h3>
+<p>ブラウザで下記のURLにアクセスし，ログイン画面が表示されることを確認する．</p>
+<pre class="hljs"><code><div>http://プロジェクト名-ユーザ名.c9users.io/home
+</div></code></pre>
+<p>表示される画面は以下の通り．</p>
+<p><img src="img/home.png" alt="ログイン画面"></p>
+<p>なお，アクセス時にリダイレクトされてURLが下記になっている点に注意．</p>
+<pre class="hljs"><code><div>http://プロジェクト名-ユーザ名.c9users.io/login
+</div></code></pre>
+<p>「register」から各データを登録してログインすると下記の画面が表示される．</p>
+<p><img src="img/login.png" alt="ログイン状態"></p>
+<h3 id="4-%E4%BB%96%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%82%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E7%8A%B6%E6%85%8B%E3%81%AE%E3%81%BF%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B"><strong>4. 他のページもログイン状態のみ表示されるようにする</strong></h3>
+<ul>
+<li>
+<p>現在，ログインしていない状態でも各ページが表示される状態となっているが，ログインしている状態のみページを表示させるよう変更する．</p>
+</li>
+<li>
+<p>作成した「TasksController」に「HomeController」の「__construct()」メソッドを追加する．</p>
+</li>
+</ul>
+<p><code>/app/Http/Controllers/TasksController.php</code>を以下のように編集（追記）する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Task;
+use Validator;
+
+class TasksController extends Controller
+{
+<span class="hljs-addition">+   //クラスが呼ばれたら最初に実行する処理</span>
+<span class="hljs-addition">+   public function __construct(){</span>
+<span class="hljs-addition">+       $this-&gt;middleware('auth');</span>
+<span class="hljs-addition">+   }</span>
+    //登録処理関数
+...
+</div></code></pre>
+<p><code>/routes/web.php</code>を以下のように編集する．（最下部）</p>
+<pre class="hljs"><code><div>...
+Auth::routes();
+<span class="hljs-deletion">-Route::get('/home', 'HomeController@index')-&gt;name('home');</span>
+<span class="hljs-addition">+Route::get('/home', 'TasksController@index')-&gt;name('home');</span>
+</div></code></pre>
+<p>これで全てのページがログインしている状態でのみ表示されるようになる．</p>
+<p><code>app.blade.php</code>の内容が更新されているため，見た目が変わる点に注意．一部条件で正常に表示されないため，以下のように修正する．</p>
+<pre class="hljs"><code><div>&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+    &lt;!-- CSRF Token --&gt;
+    &lt;meta name="csrf-token" content="{{ csrf_token() }}"&gt;
+
+    &lt;title&gt;{{ config('app.name', 'Laravel') }}&lt;/title&gt;
+
+    &lt;!-- Scripts --&gt;
+<span class="hljs-deletion">-   &lt;script src="{{ asset('js/app.js') }}" defer&gt;&lt;/script&gt;</span>
+<span class="hljs-addition">+   &lt;script src="{{ secure_asset('js/app.js') }}" defer&gt;&lt;/script&gt;</span>
+
+    &lt;!-- Fonts --&gt;
+    &lt;link rel="dns-prefetch" href="//fonts.gstatic.com"&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"&gt;
+
+    &lt;!-- Styles --&gt;
+<span class="hljs-deletion">-   &lt;link href="{{ asset('css/app.css') }}" rel="stylesheet"&gt;</span>
+<span class="hljs-addition">+   &lt;link href="{{ secure_asset('css/app.css') }}" rel="stylesheet"&gt;</span>
+&lt;/head&gt;
+</div></code></pre>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E8%A8%98%E8%BF%B0%E5%86%85%E5%AE%B9%E5%A4%89%E6%9B%B4"><strong>【参考】ログイン関連の記述内容変更</strong></h3>
+<p>ログイン画面などのファイルは<code>/resources/views/auth</code>ディレクトリに保存されている．</p>
+<p>これらのファイルを編集することで，表示内容の変更（メッセージの日本語化）などができる．</p>
+<h3 id="%E3%80%90%E5%8F%82%E8%80%83%E3%80%91%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E4%B8%AD%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97"><strong>【参考】ログイン中ユーザの情報取得</strong></h3>
+<ul>
+<li>webサービスでは，ログインしているユーザの情報を使用することが多い．</li>
+<li>Laravelではユーザ情報の取得についても関数が用意されている．</li>
+</ul>
+<p>記述式は以下</p>
+<pre class="hljs"><code><div>Auth::user()-&gt;プロパティ名;
+</div></code></pre>
+<p>コントローラ内で使用する例</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">use</span> <span class="hljs-title">Auth</span>;
+<span class="hljs-comment">//idを取得する場合</span>
+$auth = Auth::user()-&gt;id;
+
+<span class="hljs-comment">//全て取得する場合（[id, task, ...]）</span>
+$auths = Auth::user();
+</div></code></pre>
+<div style="page-break-before:always"></div>
+<h2 id="%E8%BF%BD%E5%8A%A0%E6%A9%9F%E8%83%BD%E5%AE%9F%E8%A3%85%E2%91%A1-1%E3%83%A6%E3%83%BC%E3%82%B61%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9"><strong>追加機能実装②-1ユーザ1サービス</strong></h2>
+<ul>
+<li>ログイン機能は準備できたが，登録したデータは全員が全てのデータを扱える状態．</li>
+<li>ユーザごとにタスク登録→表示ができるよう修正する．</li>
+</ul>
+<h3 id="1-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E4%BF%AE%E6%AD%A3"><strong>1. テーブル修正</strong></h3>
+<p>データを登録するテーブルにユーザ情報を登録するカラム名を追加する．</p>
+<p>まずはテーブル構成を設定するマイグレーションファイルを設定する．</p>
+<p><code>yyyy_mm_dd_******_create_tasks_table.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>Schema::create('tasks', function (Blueprint $table) {
+    $table-&gt;increments('id');
+<span class="hljs-addition">+   $table-&gt;integer('user_id');</span>
+    $table-&gt;string('task');
+    $table-&gt;date('deadline');
+    $table-&gt;text('comment')-&gt;nullable();
+    $table-&gt;timestamps();
+});
+</div></code></pre>
+<p>編集が完了したらターミナルで以下を実行する．現在テーブルで保存されているデータが消去される点に注意．</p>
+<pre class="hljs"><code><div>$ php artisan migrate:reset
+</div></code></pre>
+<p>実行結果．エラーが出るときは<code>$ mysql-ctl cli</code>でmysqlを起動してから再度実行する．（mysqlはすぐ<code>exit;</code>で終了でOK）</p>
+<pre class="hljs"><code><div>Rolling back: 2019_01_25_135543_create_tasks_table
+Rolled back:  2019_01_25_135543_create_tasks_table
+Rolling back: 2014_10_12_100000_create_password_resets_table
+Rolled back:  2014_10_12_100000_create_password_resets_table
+Rolling back: 2014_10_12_000000_create_users_table
+Rolled back:  2014_10_12_000000_create_users_table
+</div></code></pre>
+<p>その後，以下のコマンドでテーブルを再構築する．</p>
+<pre class="hljs"><code><div>$ php artisan migrate
+</div></code></pre>
+<p>実行結果</p>
+<pre class="hljs"><code><div>Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2019_01_25_135543_create_tasks_table
+Migrated:  2019_01_25_135543_create_tasks_table
+</div></code></pre>
+<h3 id="2-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E7%A2%BA%E8%AA%8D"><strong>2. テーブル確認</strong></h3>
+<p>テーブルの構成を修正したので，mysqlで構造を確認する．</p>
+<p>ターミナルで以下を実行する．</p>
+<pre class="hljs"><code><div>$ mysql-ctl cli
+</div></code></pre>
+<p>mysqlに入ったら，DBをc9に変更する．</p>
+<pre class="hljs"><code><div>mysql&gt; use c9;
+Reading table information <span class="hljs-keyword">for</span> completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+</div></code></pre>
+<p>テーブルが構成されていることを確認する．</p>
+<pre class="hljs"><code><div>mysql&gt; show tables;
++-----------------+
+| Tables_in_c9    |
++-----------------+
+| migrations      |
+| password_resets |
+| tasks           |
+| users           |
++-----------------+
+4 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</div></code></pre>
+<p><code>tasks</code>テーブルの構造を確認する．</p>
+<pre class="hljs"><code><div>mysql&gt; desc tasks;
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| user_id    | int(11)          | NO   |     | NULL    |                |
+| task       | varchar(191)     | NO   |     | NULL    |                |
+| deadline   | date             | NO   |     | NULL    |                |
+| comment    | text             | YES  |     | NULL    |                |
+| created_at | timestamp        | YES  |     | NULL    |                |
+| updated_at | timestamp        | YES  |     | NULL    |                |
++------------+------------------+------+-----+---------+----------------+
+7 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</div></code></pre>
+<p>カラムに<code>user_id</code>が存在することを確認する．</p>
+<h3 id="3-%E8%A1%A8%E7%A4%BA%E5%87%A6%E7%90%86%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B"><strong>3. 表示処理を変更する</strong></h3>
+<p>初めにログインユーザの情報を取得するために，<code>/app/Http/Controllers/TasksController.php</code>に以下を追記する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Task;
+use Validator;
+<span class="hljs-addition">+use Auth;</span>
+...
+</div></code></pre>
+<p>ユーザ情報を格納するカラムを設定したので，一覧表示の際に，ログインしているユーザが登録したデータのみを抽出して表示するように処理を変更する．</p>
+<p><code>/app/Http/Controllers/TasksController.php</code>を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+//表示処理関数
+public function index() {
+<span class="hljs-deletion">-   $tasks = Task::orderBy('deadline', 'asc')-&gt;get();</span>
+<span class="hljs-addition">+   $tasks = Task::where('user_id',Auth::user()-&gt;id)</span>
+<span class="hljs-addition">+               -&gt;orderBy('deadline', 'asc')</span>
+<span class="hljs-addition">+               -&gt;get();</span>
+    return view('tasks', [
+        'tasks' =&gt; $tasks
+    ]);
+}
+...
+</div></code></pre>
+<p>また，データを登録する際にログインしているユーザのユーザidを追加する必要がある．<code>/app/Http/Controllers/TasksController.php</code>の登録処理部分を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+//登録処理関数
+public function store(Request $request) {
+    ...
+    // Eloquentモデル
+    $task = new Task;
+<span class="hljs-addition">+   $task-&gt;user_id = Auth::user()-&gt;id;</span>
+    $task-&gt;task = $request-&gt;task;
+    $task-&gt;deadline = $request-&gt;deadline;
+    $task-&gt;comment = $request-&gt;comment;
+    $task-&gt;save();
+    //「/」ルートにリダイレクト
+    return redirect('/');
+}
+...
+</div></code></pre>
+<p>更新画面遷移の処理を以下のように変更する．</p>
+<pre class="hljs"><code><div>...
+//更新画面表示関数
+<span class="hljs-deletion">-public function edit(Task $task) {</span>
+<span class="hljs-addition">+public function edit($task_id) {</span>
+<span class="hljs-addition">+   $task = Task::where('user_id',Auth::user()-&gt;id)-&gt;find($task_id);</span>
+    return view('tasksedit', [
+        'task' =&gt; $tasks
+    ]);
+}
+...
+</div></code></pre>
+<p>更新処理を以下のように編集する．</p>
+<pre class="hljs"><code><div>...
+//更新処理関数
+public function update(Request $request) {
+    //バリデーション
+    $validator = Validator::make($request-&gt;all(), [
+        'id' =&gt; 'required',
+        'task' =&gt; 'required|max:255',
+        'deadline' =&gt; 'required'
+    ]);
+    //バリデーション:エラー
+    if ($validator-&gt;fails()) {
+        return redirect('/')
+            -&gt;withInput()
+            -&gt;withErrors($validator);
+    }
+    //データ更新処理
+<span class="hljs-deletion">-   $task = Task::find($request-&gt;id);</span>
+<span class="hljs-addition">+   $task = Task::where('user_id',Auth::user()-&gt;id)</span>
+<span class="hljs-addition">+               -&gt;find($request-&gt;id);</span>
+    $task-&gt;task   = $request-&gt;task;
+    $task-&gt;deadline = $request-&gt;deadline;
+    $task-&gt;comment = $request-&gt;comment;
+    $task-&gt;save();
+    return redirect('/');
+}
+...
+</div></code></pre>
+<p>ここまでの実装で，ユーザ登録し，登録したユーザごとに登録したデータを登録，表示，更新，削除する動作が完成した．</p>
+<p>各動作について実際に動かして検証しよう！</p>
+<div style="page-break-before:always"></div>
+<h2 id="%E8%BF%BD%E5%8A%A0%E6%A9%9F%E8%83%BD%E5%AE%9F%E8%A3%85%E2%91%A2-api%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85%EF%BC%88jquery-ajax%E7%B7%A8%EF%BC%89"><strong>追加機能実装③-API機能の実装（jQuery &amp; ajax編）</strong></h2>
+<ul>
+<li>ここまでで，基本的なwebサービスの形を実装した．</li>
+<li>Laravelには，webページの遷移を介してのやり取りの他に，API機能を実装できる機能も含まれている．</li>
+<li>APIの機能を用いることでページ遷移を行わずにデータのやり取りを行えるため，他アプリケーションからのアクセスや，SPAアプリケーションの構築などに利用できる．</li>
+<li>今回はjavascriptで広く用いられている「ajax」の仕組みを用いて通信を行う．PHP及びLaravelだけでなくjavascriptの知識も必要になるため，やや発展的な内容となる．</li>
+</ul>
+<h3 id="0-api%E3%81%A8%E3%81%AF"><strong>0. APIとは</strong></h3>
+<ul>
+<li>APIとは，「Application Programming Interface」の略で，あるプログラムの機能や管理するデータを呼び出して使用するための手順や規約のことを指す．</li>
+<li>多くのサービスにおいてAPIが提供されており，企業や団体が保有するデータを取得したり，自身の作成したプログラムに組み込んでデータのCRUD処理を行ったりできる．</li>
+<li>ページ全てを読みこまず，データ部分のみを通信するため，通信量の削減，高速化などのメリットがある．</li>
+<li>今回の例では，URLへのリクエストに対して返すデータの形式や処理を記述し，javascriptから「登録」「表示」「削除」の3つを扱うまでを実装する．（更新の処理は新たにページを作成する必要があるため今回は割愛する）</li>
+<li>今回の大きな流れは以下の通り．</li>
+</ul>
+<ol>
+<li>API処理を実行して表示するためのページを作成．</li>
+<li>実際に行うAPI処理を作成．（PHP）</li>
+<li>javascriptを用いてAPIを実行→結果を表示する処理の作成．（javascript, jquery，ajax）</li>
+</ol>
+<h3 id="1-api%E5%87%A6%E7%90%86%E5%AE%9F%E8%A1%8C%E7%94%A8%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90"><strong>1. API処理実行用ページの作成</strong></h3>
+<ul>
+<li>まず，APIの処理を行うための準備を整える．</li>
+<li>具体的には，下記の手順で実施．</li>
+</ul>
+<ol>
+<li>APIを使用するViewを表示するルーティングを定義する．</li>
+<li>上記Viewを作成する．</li>
+</ol>
+<p>まず，ルーティングの定義のため，<code>routes/web.php</code>に下記を追加する．「<code>/api_ajax</code>」にリクエストが来た際に「<code>TasksController@api_ajax</code>」を実行するように記述している．</p>
+<pre class="hljs"><code><div>//更新処理
+...
+
+<span class="hljs-addition">+//apiページ表示処理</span>
+<span class="hljs-addition">+Route::get('/api_ajax', 'TasksController@api_ajax');</span>
+
+Auth::routes();
+...
+</div></code></pre>
+<p>続いて，<code>app/http/Controller/TasksController</code>に以下を追加する．</p>
+<pre class="hljs"><code><div>//削除処理関数
+...
+
+<span class="hljs-addition">+//api画面表示用関数</span>
+<span class="hljs-addition">+public function api_ajax() {</span>
+<span class="hljs-addition">+   return view('api_ajax');</span>
+<span class="hljs-addition">+}</span>
+...
+</div></code></pre>
+<p>次は，表示するViewを作成する．<code>resources/views/api_ajax.blade.php</code>を新規作成する．</p>
+<p>中身は空なので，以下を記述する．これまでの<code>tasks.blade.php</code>とほぼ同じ構造だが，javascriptを用いて操作するため「id名」「class名」「button要素のtype」などを変更している．</p>
+<pre class="hljs"><code><div>@extends('layouts.app')
+@section('content')
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel-body"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-horizontal"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"api_form"</span>&gt;</span>
+            {{ csrf_field() }}
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- タスク名 --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-3 control-label"</span>&gt;</span>Task<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"task"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- deadline --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"deadline"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-3 control-label"</span>&gt;</span>Deadline<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"deadline"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"deadline"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- comment --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"comment"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-3 control-label"</span>&gt;</span>Comment<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"comment"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"comment"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- タスク登録ボタン --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-sm-offset-3 col-sm-6"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"submit"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel panel-default"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel-heading"</span>&gt;</span>タスクリスト<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"panel-body"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-striped task-table"</span>&gt;</span>
+                    <span class="hljs-comment">&lt;!-- テーブルヘッダ --&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>タスク<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>&amp;nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+                    <span class="hljs-comment">&lt;!-- テーブル本体 --&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"echo"</span>&gt;</span>
+                        <span class="hljs-comment">&lt;!--データ出力部分--&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+@endsection
+</div></code></pre>
+<p>最後に，API処理用ページへリンクできるよう，<code>resources/views/tasks.blade.php</code>に以下を追記する．</p>
+<pre class="hljs"><code><div>&lt;/form&gt;
+&lt;!--入力フォーム--&gt;
+
+<span class="hljs-addition">+&lt;!--api画面用ボタン--&gt;</span>
+<span class="hljs-addition">+&lt;a href="{{ url('api_ajax/') }}"&gt;</span>
+<span class="hljs-addition">+   &lt;button type="submit" class="btn btn-primary"&gt;API処理画面&lt;/button&gt;</span>
+<span class="hljs-addition">+&lt;/a&gt;</span>
+
+&lt;!--以下表示領域--&gt;
+@if (count($tasks) &gt; 0)
+...
+</div></code></pre>
+<p>ここまでできたら，ブラウザで状態を確認する．まず，ログインした後の一覧画面は以下．</p>
+<p><img src="img/api_link.png" alt="APIページ用リンク設置"></p>
+<p>上記画面で「API処理画面」ボタンをクリックし，以下のページが表示されることを確認する．</p>
+<p><img src="img/api_top.png" alt="APIページ"></p>
+<p>ここまででルーティングとViewの準備は完了．</p>
+<h3 id="2-api%E5%87%A6%E7%90%86%E3%81%AE%E5%AE%9F%E8%A3%85"><strong>2. API処理の実装</strong></h3>
+<ul>
+<li>ここから，実際のAPI処理について実装を行う．</li>
+<li>流れは以下の通り．</li>
+</ul>
+<ol>
+<li>API処理のルーティング作成．</li>
+<li>API処理用のController作成．</li>
+</ol>
+<p>まずは，API処理を実行するためのルーティングを作成する．（前項の処理はAPI処理を行うViewを表示するためのルーティング）</p>
+<p><code>routes/api.php</code>を以下のように編集する．<code>api.php</code>は<code>web.php</code>と同等の役割を果たすが，apiは前者，viewの制御は後者が行うこととして準備されている．<br>
+API処理として，「表示」「登録」「削除」の3つのルーティングを記述する．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+use Illuminate\Http\Request;
+
+Route::middleware('auth:api')-&gt;get('/user', function (Request $request) {
+    return $request-&gt;user();
+});
+
+<span class="hljs-addition">+// ログイン中のみ処理を実行する</span>
+<span class="hljs-addition">+Route::group(['middleware' =&gt; ['auth']], function () {</span>
+<span class="hljs-addition">+   // api関連の処理をまとめる（urlに自動的に/apiが加わる）</span>
+<span class="hljs-addition">+  Route::group(['middleware' =&gt; ['api']], function(){</span>
+<span class="hljs-addition">+      // 表示</span>
+<span class="hljs-addition">+      Route::get('/', 'Api\TasksController@index');</span>
+<span class="hljs-addition">+      // 登録</span>
+<span class="hljs-addition">+      Route::post('/tasks', 'Api\TasksController@store');</span>
+<span class="hljs-addition">+      // 削除</span>
+<span class="hljs-addition">+      Route::post('/task/{task}', 'Api\TasksController@destroy');</span>
+<span class="hljs-addition">+  });</span>
+<span class="hljs-addition">+});</span>
+</div></code></pre>
+<p>上記の処理では，下記のようにリクエスト先を指定している．</p>
+<ul>
+<li>表示処理：<code>/api</code></li>
+<li>登録処理：<code>/api/tasks</code></li>
+<li>削除処理：<code>/api/task/{id値}</code></li>
+</ul>
+<p>続いて，API処理用のControllerを作成する．<code>app/Http/Controllers</code>に<code>Api</code>ディレクトリを作成し，その中に<code>app/Http/Controllers/TasksController</code>ファイルをコピーする．</p>
+<p>コピーした<code>app/Http/Controllers/Api/TasksController</code>の内容を以下のように編集する．バリデーション関連を削除しているが，送信時にjavascriptで制御するので問題ない．</p>
+<p>「登録」「削除」の処理はそれぞれの処理の後に「表示」と同じ処理を実行している．これは，登録や削除の状態を取得してページに反映するためである．</p>
+<pre class="hljs"><code><div>&lt;?php
+
+namespace App\Http\Controllers;
+<span class="hljs-addition">+namespace App\Http\Controllers\Api;</span>
+
+use Illuminate\Http\Request;
+use App\Task;
+use Validator;
+use Auth;
+<span class="hljs-addition">+use App\Http\Controllers\Controller;</span>
+
+class TasksController extends Controller
+{
+    public function __construct(){
+        $this-&gt;middleware('auth');
+    }
+    //登録処理関数
+    public function store(Request $request) {
+<span class="hljs-deletion">-       //バリデーション関連を削除</span>
+<span class="hljs-deletion">-       ...</span>
+        // Eloquentモデル
+        $task = new Task;
+        $task-&gt;user_id = Auth::user()-&gt;id;
+        $task-&gt;task = $request-&gt;task;
+        $task-&gt;deadline = $request-&gt;deadline;
+        $task-&gt;comment = $request-&gt;comment;
+        $task-&gt;save();
+<span class="hljs-deletion">-       //「/」ルートにリダイレクト</span>
+<span class="hljs-deletion">-       return redirect('/');</span>
+<span class="hljs-addition">+       // 最新のDB情報を取得して返す</span>
+<span class="hljs-addition">+       $tasks = Task::where('user_id',Auth::user()-&gt;id)</span>
+<span class="hljs-addition">+                   -&gt;orderBy('deadline', 'asc')</span>
+<span class="hljs-addition">+                   -&gt;get();</span>
+<span class="hljs-addition">+       return $tasks;</span>
+    }
+
+    //表示処理関数
+    public function index() {
+        $tasks = Task::where('user_id',Auth::user()-&gt;id)
+                    -&gt;orderBy('deadline', 'asc')
+                    -&gt;get();
+<span class="hljs-deletion">-       return view('tasks', [</span>
+<span class="hljs-deletion">-           'tasks' =&gt; $tasks</span>
+<span class="hljs-deletion">-       ]);</span>
+<span class="hljs-addition">+       return $tasks;</span>
+    }
+
+<span class="hljs-deletion">-   //更新画面表示処理を削除</span>
+<span class="hljs-deletion">-   ...</span>
+<span class="hljs-deletion">-   //更新処理を削除</span>
+<span class="hljs-deletion">-   ...</span>
+
+    //削除処理関数
+<span class="hljs-deletion">-   public function destroy(Task $task) {</span>
+<span class="hljs-deletion">-       $task-&gt;delete();</span>
+<span class="hljs-deletion">-       return redirect('/');</span>
+<span class="hljs-deletion">-   }</span>
+<span class="hljs-addition">+   public function destroy($task_id) {</span>
+<span class="hljs-addition">+       $task = Task::where('user_id',Auth::user()-&gt;id)-&gt;find($task_id);</span>
+<span class="hljs-addition">+       $task-&gt;delete();</span>
+<span class="hljs-addition">+       // 最新のDB情報を取得して返す</span>
+<span class="hljs-addition">+       $tasks = Task::where('user_id',Auth::user()-&gt;id)</span>
+<span class="hljs-addition">+               -&gt;orderBy('deadline', 'asc')</span>
+<span class="hljs-addition">+               -&gt;get();</span>
+<span class="hljs-addition">+       return $tasks;</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-deletion">-   //api画面表示用関数を削除</span>
+<span class="hljs-deletion">-   ...</span>
+}
+</div></code></pre>
+<p>最後に，ログイン中にしかAPIを実行させないため，<code>/cms/app/Http/Kernel.php</code>に以下を追記する．</p>
+<p>初期状態では，API使用時にログインなどのセッション情報を管理しないため，ユーザidの使用などができない状況となっている．下記記述で，通常の処理と同様にする．</p>
+<pre class="hljs"><code><div>...
+protected $middlewareGroups = [
+    'web' =&gt; [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        // \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+
+    'api' =&gt; [
+<span class="hljs-addition">+       \App\Http\Middleware\EncryptCookies::class,</span>
+<span class="hljs-addition">+       \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,</span>
+<span class="hljs-addition">+       \Illuminate\Session\Middleware\StartSession::class,</span>
+<span class="hljs-addition">+       \Illuminate\View\Middleware\ShareErrorsFromSession::class,</span>
+        'throttle:60,1',
+        'bindings',
+    ],
+];
+...
+</div></code></pre>
+<p>これでControllerの実装は完了．ただ，この状態では作成したAPIを呼び出していないので動作の確認は行えない．</p>
+<h3 id="3-javascript%E3%82%92%E7%94%A8%E3%81%84%E3%81%9Fapi%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%A8%E7%94%BB%E9%9D%A2%E8%A1%A8%E7%A4%BA%E2%91%A0--%E6%BA%96%E5%82%99"><strong>3. javascriptを用いたAPIの呼び出しと画面表示① -準備</strong></h3>
+<ul>
+<li>ここまででAPI処理を作成したので，API処理画面で実行し，データの「登録」「表示」「削除」を行うjavascriptの処理を実装する．</li>
+<li>流れは以下．</li>
+</ul>
+<ol>
+<li>jsファイルの読み込みと作成（本項）</li>
+<li>js処理の記述（次項以降）</li>
+<li>（動作確認）</li>
+</ol>
+<p>まず，javascriptの処理を記述するファイルの作成と，作成したファイルの読み込みを行う．</p>
+<p><code>public/js</code>に<code>api_ajax.js</code>を作成する．（この時点では中身は空のままでOK）</p>
+<p>続いて，上記ファイルを読み込みを行うよう，<code>resources/views/layouts/app.blade.php</code>に以下を追記する．ajax通信に使用するjqueryライブラリの読み込みも合わせて記述する．</p>
+<pre class="hljs"><code><div>...
+    &lt;!-- Scripts --&gt;
+    &lt;script src="{{ secure_asset('js/app.js') }}" defer&gt;&lt;/script&gt;
+<span class="hljs-addition">+   &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"&gt;&lt;/script&gt;</span>
+<span class="hljs-addition">+   &lt;script src="{{ secure_asset('js/api_ajax.js') }}" defer&gt;&lt;/script&gt;</span>
+...
+</div></code></pre>
+<p>ここまで記述したらjavascriptが正常に動作することを確認する．<code>public/js/api_ajax.js</code>は空なので，以下を記述する．今回はjavascriptの詳細な解説は省くためjqueryを用いて記述する．（慣れていればvue.jsなどでも実装可能）</p>
+<pre class="hljs"><code><div><span class="hljs-addition">+$(function(){</span>
+<span class="hljs-addition">+   alert('ok');</span>
+<span class="hljs-addition">+});</span>
+</div></code></pre>
+<p>保存したら<code>http://プロジェクト名-ユーザ名.c9users.io/api_ajax</code>にアクセスし，アラートが表示されればOK．</p>
+<p>続いて，APIを呼び出して各処理を行う処理を作成する．</p>
+<p>jsファイルの処理の流れは以下の通り．</p>
+<ul>
+<li>ページ読み込み時にDBのデータを取得して表示．</li>
+<li>フォーム入力→送信ボタンクリックでデータをDBに登録し，登録後の最新データを取得して表示を更新．</li>
+<li>削除ボタンをクリックしたらDBから該当するデータを削除し，登録後の最新データを取得して表示を更新．</li>
+</ul>
+<p>まず，「登録」「表示」「更新」の処理を行う関数をそれぞれ定義する．<code>public/js/api_ajax.js</code>に以下を記述する．javascriptでは<code>function 関数名(){...}</code>の形で関数を定義し，<code>{...}</code>部分に処理を記述する．</p>
+<pre class="hljs"><code><div>$(function(){
+<span class="hljs-deletion">-   alert('ok');</span>
+
+<span class="hljs-addition">+   // 登録する関数</span>
+<span class="hljs-addition">+   function storeData(){</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   // 表示する関数</span>
+<span class="hljs-addition">+   function indexData(){</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+<span class="hljs-addition">+   // 削除する関数</span>
+<span class="hljs-addition">+   function deleteData(id){</span>
+<span class="hljs-addition">+       //</span>
+<span class="hljs-addition">+   }</span>
+
+});
+</div></code></pre>
+<p>jsファイルに各処理の関数を定義したので，これで準備は完了．</p>
+<h3 id="4-javascript%E3%82%92%E7%94%A8%E3%81%84%E3%81%9Fapi%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%A8%E7%94%BB%E9%9D%A2%E8%A1%A8%E7%A4%BA%E2%91%A1--%E8%A1%A8%E7%A4%BA%E5%87%A6%E7%90%86"><strong>4. javascriptを用いたAPIの呼び出しと画面表示② -表示処理</strong></h3>
+<p>3つの関数を定義したが，この後はそれぞれの処理と処理実行に関する記述を行う．<br>
+まずは表示の処理である<code>indexData()</code>関数から記述する．<code>public/js/api_ajax.js</code>を編集する．</p>
+<p>ここでは<code>$.getJSON()</code>を使用してデータを取得し，<code>console.log()</code>で出力している．(<code>data</code>に取得したデータが入る)<br>
+<code>url</code>で<code>/api</code>を指定してリクエストを送ることで，<code>routes/api.php</code>に記述した<code>Route::get('/', 'Api\TasksController@index');</code>が実行されるため，DBから必要なデータを取得する仕組み．</p>
+<p>また，関数は定義しただけでは実行されないため，読み込み時に関数を実行する処理も記述している．</p>
+<pre class="hljs"><code><div>...
+// 表示する関数
+function indexData(){
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   const url = '/api';</span>
+<span class="hljs-addition">+   $.getJSON(url)</span>
+<span class="hljs-addition">+       .done(function (data, textStatus, jqXHR) {</span>
+<span class="hljs-addition">+           console.log(data);</span>
+<span class="hljs-addition">+       })</span>
+<span class="hljs-addition">+       .fail(function (jqXHR, textStatus, errorThrown) {</span>
+<span class="hljs-addition">+           console.log(jqXHR.status + textStatus + errorThrown);</span>
+<span class="hljs-addition">+       })</span>
+<span class="hljs-addition">+       .always(function () {</span>
+<span class="hljs-addition">+           console.log('get:complete');</span>
+<span class="hljs-addition">+       });</span>
+}
+
+// 削除する関数
+function deleteData(id){
+    //
+}
+
+<span class="hljs-addition">+// 読み込み時に実行</span>
+<span class="hljs-addition">+indexData();</span>
+...
+</div></code></pre>
+<p>ブラウザ表示後に検証ツールを開き，consoleを確認して以下のように出力されていればOK．</p>
+<p>このデータはオブジェクトを配列にした形となっており，必要なデータを取り出すには<code>data[0].task</code>のように記述する．</p>
+<p><img src="img/api_console.png" alt="APIデータ取得テスト"></p>
+<p>ここから，実際に取得したデータをhtmlに追加し，webブラウザ上に表示するための処理を追加する．</p>
+<p>今回は，「表示」「登録」「削除」のいずれの場合もデータ処理後の最新のデータを取得して表示するため，html出力の処理を下記の関数で定義する．<code>make_dom(data)</code>の<code>data</code>にサーバから受け取ったデータを入れることでhtml要素を文字列として返す．</p>
+<p>この関数を「登録」「表示」「削除」の各処理後に実行して画面を最新の状態に保つ．</p>
+<pre class="hljs"><code><div>$(function(){
+<span class="hljs-addition">+   // データからhtmlを出力する関数</span>
+<span class="hljs-addition">+   function make_dom(data){</span>
+<span class="hljs-addition">+       var str = '';</span>
+<span class="hljs-addition">+       for (var i=0;i&lt;data.length;i++){</span>
+<span class="hljs-addition">+           str += `&lt;tr&gt;</span>
+<span class="hljs-addition">+                       &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+                           ${data[i].task}</span>
+<span class="hljs-addition">+                       &lt;/td&gt;</span>
+<span class="hljs-addition">+                       &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+                           ${data[i].deadline}</span>
+<span class="hljs-addition">+                       &lt;/td&gt;</span>
+<span class="hljs-addition">+                       &lt;td class="table-text"&gt;</span>
+<span class="hljs-addition">+                           ${data[i].comment}</span>
+<span class="hljs-addition">+                       &lt;/td&gt;</span>
+<span class="hljs-addition">+                       &lt;td&gt;</span>
+<span class="hljs-addition">+                           &lt;button type="button" class="btn btn-danger destroy" id="${data[i].id}"&gt;削除&lt;/button&gt;</span>
+<span class="hljs-addition">+                       &lt;/td&gt;</span>
+<span class="hljs-addition">+                   &lt;/tr&gt;`;</span>
+<span class="hljs-addition">+       }</span>
+<span class="hljs-addition">+       return str;</span>
+<span class="hljs-addition">+   }</span>
+    // 登録する関数
+    ...
+</div></code></pre>
+<p>続けて<code>public/js/api_ajax.js</code>を編集する．データ取得に成功した場合は取得したデータをhtmlタグに入れ，最後に<code>#echo</code>の要素に出力している．</p>
+<p>また，削除ボタンのid属性に各レコードのid値を入れている．（削除処理の際に必要）</p>
+<pre class="hljs"><code><div>...
+// 表示する関数
+function indexData(){
+    const url = '/api';
+    $.getJSON(url)
+        .done(function (data, textStatus, jqXHR) {
+            console.log(data);
+<span class="hljs-addition">+           $('#echo').html(make_dom(data));</span>
+    })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+...
+</div></code></pre>
+<p>ここまで記述したらブラウザで表示を確認する．DBに保存されているデータが下のようにリスト表示されていればOK．</p>
+<p><img src="img/api_list.png" alt="APIリスト表示"></p>
+<h3 id="%E3%80%90%E8%A7%A3%E8%AA%AC%E3%80%91ajax%E3%81%A8getjson"><strong>【解説】$.ajax()と$.getJSON()</strong></h3>
+<p>どちらも，urlにリクエストを送り，データの送受信を行う方法である．</p>
+<p><code>$.ajax()</code>がパラメータを設定しての送受信が行えるのに対し，<code>$.getJSON()</code>はシンプルにjson形式のデータを受け取ることに特化したメソッドである．</p>
+<p>今回は「登録」「削除」の処理は入力値やレコード指定のためのid値を送信する必要があるため<code>$.ajax()</code>を使用し，「表示」の処理は情報を取得するのみであるため<code>$.getJSON()</code>を使用している．</p>
+<p><code>$.ajax()</code>基本の書式は以下．</p>
+<pre class="hljs"><code><div>$.ajax({
+        <span class="hljs-attr">headers</span>:  ...,      <span class="hljs-comment">// ヘッダー情報</span>
+        dataType:  ...,     <span class="hljs-comment">// 受け取るときの形式</span>
+        url: ...,           <span class="hljs-comment">// 送信先url</span>
+        type: ...,          <span class="hljs-comment">// 送信の形式</span>
+        data: ...,          <span class="hljs-comment">// 送信するデータ</span>
+        processData: <span class="hljs-literal">false</span>, <span class="hljs-comment">// json形式の場合はfalse</span>
+        contentType: <span class="hljs-literal">false</span>  <span class="hljs-comment">// json形式の場合はfalse</span>
+    })
+    .done(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, textStatus, jqXHR</span>) </span>{
+        <span class="hljs-comment">// データ取得成功時に実行する処理</span>
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">jqXHR, textStatus, errorThrown</span>) </span>{
+        <span class="hljs-comment">// 失敗時に実行する処理</span>
+    })
+    .always(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// 成功失敗に関わらず実行される処理</span>
+    });
+</div></code></pre>
+<p><code>$.getJSON()</code>基本の書式は以下．</p>
+<pre class="hljs"><code><div>$.getJSON(url)
+    .done(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, textStatus, jqXHR</span>) </span>{
+        <span class="hljs-comment">// データ取得成功時に実行する処理</span>
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">jqXHR, textStatus, errorThrown</span>) </span>{
+        <span class="hljs-comment">// 失敗時に実行する処理</span>
+    })
+    .always(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// 成功失敗に関わらず実行される処理</span>
+    });
+</div></code></pre>
+<h3 id="5-javascript%E3%82%92%E7%94%A8%E3%81%84%E3%81%9Fapi%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%A8%E7%94%BB%E9%9D%A2%E8%A1%A8%E7%A4%BA%E2%91%A2--%E7%99%BB%E9%8C%B2%E5%87%A6%E7%90%86"><strong>5. javascriptを用いたAPIの呼び出しと画面表示③ -登録処理</strong></h3>
+<p>ここからは登録の処理である<code>storeData()</code>関数を記述する．ここでの流れは以下の通り．</p>
+<ol>
+<li><code>$.ajax()</code>の送信先に<code>/api/tasks</code>のAPIを設定．</li>
+<li><code>.val()</code>でinput要素の入力値を取得し，<code>data</code>オブジェクトに格納する．</li>
+<li><code>$.ajax()</code>でデータを送信．データはjson形式にする．</li>
+<li>データ送信成功時，最新のDBを取得し，リストを更新する．</li>
+</ol>
+<p>また，実行イベントは送信ボタンクリック時とし，この時点でinput要素への入力有無を判定している．必須項目である「task」「deadline」のいずれかが未入力である場合はアラートを出す．</p>
+<pre class="hljs"><code><div>...
+// 登録する関数
+function storeData(){
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   // 送信先の指定</span>
+<span class="hljs-addition">+   var url = '/api/tasks';</span>
+<span class="hljs-addition">+   // 入力情報の取得</span>
+<span class="hljs-addition">+   var data = {</span>
+<span class="hljs-addition">+       task:$('#task').val(),</span>
+<span class="hljs-addition">+       deadline:$('#deadline').val(),</span>
+<span class="hljs-addition">+       comment:$('#comment').val()</span>
+<span class="hljs-addition">+   };</span>
+<span class="hljs-addition">+   // データ送信</span>
+<span class="hljs-addition">+   $.ajax({</span>
+<span class="hljs-addition">+       headers: {</span>
+<span class="hljs-addition">+           'Content-Type': 'application/json',</span>
+<span class="hljs-addition">+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),</span>
+<span class="hljs-addition">+       },</span>
+<span class="hljs-addition">+       dataType: 'json',</span>
+<span class="hljs-addition">+       url:url,</span>
+<span class="hljs-addition">+       type:'POST',</span>
+<span class="hljs-addition">+       data:JSON.stringify(data),</span>
+<span class="hljs-addition">+       processData: false,</span>
+<span class="hljs-addition">+       contentType: false</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .done(function (data) {</span>
+<span class="hljs-addition">+       console.log(data);</span>
+<span class="hljs-addition">+       console.log('done');</span>
+<span class="hljs-addition">+       $('#echo').html(make_dom(data));</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .fail(function (XMLHttpRequest, textStatus, errorThrown) {</span>
+<span class="hljs-addition">+       console.log(textStatus);</span>
+<span class="hljs-addition">+       console.log('fail');</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .always(function () {</span>
+<span class="hljs-addition">+       console.log('post:complete');</span>
+<span class="hljs-addition">+   });</span>
+}
+
+// 表示する関数
+...
+
+// 削除する関数
+...
+
+// 読み込み時に処理
+...
+
+<span class="hljs-addition">+// 送信ボタンクリック時に登録</span>
+<span class="hljs-addition">+$('#submit').on('click',function(){</span>
+<span class="hljs-addition">+   if(</span>
+<span class="hljs-addition">+       $('#task').val() == '' ||</span>
+<span class="hljs-addition">+       $('#deadline').val() == ''</span>
+<span class="hljs-addition">+   ){</span>
+<span class="hljs-addition">+       alert('taskとdeadlineは入力必須です！')</span>
+<span class="hljs-addition">+   }else{</span>
+<span class="hljs-addition">+       storeData();</span>
+<span class="hljs-addition">+       $('#task').val(''),</span>
+<span class="hljs-addition">+       $('#deadline').val(''),</span>
+<span class="hljs-addition">+       $('#comment').val('')</span>
+<span class="hljs-addition">+   }</span>
+<span class="hljs-addition">+});</span>
+...
+</div></code></pre>
+<p>ここまで記述したらブラウザで表示を確認する．フォームに入力し，送信ボタンクリック時にリスト表示に追加されればOK．</p>
+<p><img src="img/api_store.png" alt="APIデータ登録"></p>
+<h3 id="6-javascript%E3%82%92%E7%94%A8%E3%81%84%E3%81%9Fapi%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%A8%E7%94%BB%E9%9D%A2%E8%A1%A8%E7%A4%BA%E2%91%A3--%E5%89%8A%E9%99%A4%E5%87%A6%E7%90%86"><strong>6. javascriptを用いたAPIの呼び出しと画面表示④ -削除処理</strong></h3>
+<p>ここまででAPIを使用した「登録」「表示」の処理が完成した．</p>
+<p>最後に，削除ボタンクリック時に該当するデータを削除する処理を実装する．流れは以下の通り．</p>
+<ol>
+<li>削除ボタンクリック時にボタンのid（各レコードの数値が入っている）を取得する．</li>
+<li>取得したid値をurlに含めてajaxで送信．</li>
+<li>（API側でid値に該当するレコードを削除）</li>
+<li>削除完了後，最新のDBの情報を取得してリストを更新．</li>
+</ol>
+<pre class="hljs"><code><div>// 削除する関数
+function deleteData(id){
+<span class="hljs-deletion">-   //</span>
+<span class="hljs-addition">+   // 送信先の指定</span>
+<span class="hljs-addition">+   var url = `/api/task/${id}`;</span>
+<span class="hljs-addition">+   $.ajax({</span>
+<span class="hljs-addition">+       headers: {</span>
+<span class="hljs-addition">+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),</span>
+<span class="hljs-addition">+       },</span>
+<span class="hljs-addition">+       url:url,</span>
+<span class="hljs-addition">+       type:'POST',</span>
+<span class="hljs-addition">+       processData: false,</span>
+<span class="hljs-addition">+       contentType: false</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .done(function (data) {</span>
+<span class="hljs-addition">+       console.log(data);</span>
+<span class="hljs-addition">+       console.log('done');</span>
+<span class="hljs-addition">+       $('#echo').html(make_dom(data));</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .fail(function (XMLHttpRequest, textStatus, errorThrown) {</span>
+<span class="hljs-addition">+       console.log(textStatus);</span>
+<span class="hljs-addition">+       console.log('fail');</span>
+<span class="hljs-addition">+   })</span>
+<span class="hljs-addition">+   .always(function () {</span>
+<span class="hljs-addition">+       console.log('post:complete');</span>
+<span class="hljs-addition">+   });</span>
+}
+
+// 読み込み時に表示
+...
+
+// 送信ボタンクリック時に登録
+...
+
+<span class="hljs-addition">+// 削除ボタンクリック時に削除</span>
+<span class="hljs-addition">+$('#echo').on('click','.destroy',function(){</span>
+<span class="hljs-addition">+   // 削除するタスクのidを取得</span>
+<span class="hljs-addition">+   var id = $(this).attr('id');</span>
+<span class="hljs-addition">+   deleteData(id);</span>
+<span class="hljs-addition">+});</span>
+</div></code></pre>
+<p>記述したらブラウザで表示を確認する．削除ボタンをクリックして，該当するデータが表示されなくなればOK．</p>
+<p><img src="img/api_destroy.png" alt="APIデータ削除"></p>
+<p>ここまでで，APIの機能を用いた「登録」「表示」「削除」の機能が完成した．</p>
+<p>完成したページで各操作を行い，どの操作においてもページの遷移や再読込がない動きとなっていることを確認しよう！</p>
+
+</body>
+</html>

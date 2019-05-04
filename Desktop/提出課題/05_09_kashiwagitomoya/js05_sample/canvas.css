@@ -1,0 +1,18 @@
+#drowarea{
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    width:800px;
+    height:400px;
+}
+#newImgarea{
+    width:400px;
+    height: 200px;
+}
+
+
+
+/* #result {
+    width:800px;
+    height:400px;
+} */

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字</title>
+</head>
+
+<body>
+
+    <canvas id="canvas" width="500" height="300" style="border:1px solid blue;"></canvas>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var canvas = $('#canvas')[0];
+        var context = canvas.getContext('2d');
+        //カラー指定
+        context.fillStyle = "#ff0000";
+        //fontサイズ、書式
+        context.font = "20px _sans";
+        //文字の設置位置
+        context.textBaseline = "top"; //top,middle,bottom...
+        //表示文字と座標
+        context.fillText("Hello World!", 10, 100); //ctx.fillText(文字列,x,y)
+        //パスを閉じる
+        context.closePath();
+
+    </script>
+</body>
+
+</html>

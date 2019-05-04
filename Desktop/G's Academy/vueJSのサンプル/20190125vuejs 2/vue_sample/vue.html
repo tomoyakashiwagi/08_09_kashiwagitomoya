@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <title>vue.jsお店検索</title>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <nav class="navbar navbar-light" style="background-color: #41B883; color:#35495E">{{title}}</nav>
+
+        <button type="button" class="btn btn-primary" id="btn" @click="search">{{btnText}}</button>
+
+        <div class="list-group list-group-flush" v-for="object in objects">
+
+            <div class="list-group-item">
+                <img :src=`${object.image_url.shop_image1}` alt="">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{object.name}}</h5>
+                </div>
+                <p class="mb-1">{{object.address}}</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.20/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                // 変数を定義
+                title: 'vue.jsお店検索',
+                btnText: '検索',
+                objects: null,
+
+            },
+            methods: {
+                search: function () {//searchがfunctionの名前
+                    const url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=62ff42cbdd43deb0c77e218d3d12bf91&latitude=33.5866318&longitude=130.3944702&hit_per_page=100';
+                    axios.get(url)
+                        .then(function (response) {
+                            console.log(response.data.rest[0]);
+                            app.objects = response.data.rest;
+                        });
+                },
+                add: function () {
+                    alert('aaaaaa');
+                    console.log('aaaaaaa');
+                }
+                // 関数を定義
+                // search: (e) => {
+                //     const url = '';
+                //     axios.get(url)
+                //         .then((response) => {
+                //             console.log(response);
+                //         })
+                // }
+
+            },
+
+            beforeMount() {
+                // 読み込み時に実行する処理
+                // alert('vue.js');
+                // console.log('vue.js');
+                this.add();
+            }
+        });
+    </script>
+</body>
+
+</html>

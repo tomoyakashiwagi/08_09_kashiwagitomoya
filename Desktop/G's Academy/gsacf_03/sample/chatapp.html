@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chatアプリ</title>
+</head>
+
+<body>
+
+    <!-- 入力&出力場所を作成しよう -->
+    <div>
+        <div>name
+            <input type="text" id="name">
+        </div>
+        <div>
+            <textarea name="" id="text" cols="30" rows="10"></textarea>
+            <button id="send">send</button>
+        </div>
+        <div id="output"></div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 以下にfirebaseのコードを貼り付けよう -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA8dkemwijzHyp3Xhh9FSAMptvL3pWtJpk",
+            authDomain: "chatapp-6e7ca.firebaseapp.com",
+            databaseURL: "https://chatapp-6e7ca.firebaseio.com",
+            projectId: "chatapp-6e7ca",
+            storageBucket: "chatapp-6e7ca.appspot.com",
+            messagingSenderId: "640296585728"
+        };
+        firebase.initializeApp(config);
+
+
+
+        var newPostRef = firebase.database().ref();
+
+        // 日時を取得する関数
+        function ymd() {
+            var date = new Date();
+            return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+        }
+        // 送信ボタンクリックでメッセージ送信
+        $('#send').on('click', function () {
+            newPostRef.push({
+                name: $('#name').val(),
+                time: ymd(),
+                text: $('#text').val()
+            });
+            $('#text').val('')
+        });
+
+        //メッセージが追加されたら自動的に表示
+        newPostRef.on('child_added', function (data) {
+            var k = data.key;
+            var v = data.val();
+            var str = '';
+            str += '<div id="' + k + '">';
+            str += '<p>' + v.name + '</p>';
+            str += '<p>' + v.time + '</p>';
+            str += '<p>' + v.text + '</p>';
+            str += '</div>';
+            $('#output').prepend(str);
+        });
+
+        $('#text').on('keydown', function (e) {
+            // console.log(e)
+            if (e.keyCode == 13) {
+                // console.log('ok');
+                newPostRef.push({
+                    name: $('#name').val(),
+                    time: ymd(),
+                    text: $('#text').val()
+                });
+                $('#text').val('')
+            }
+        });
+
+
+
+
+    </script>
+
+
+    <script>
+
+
+
+    </script>
+
+</body>
+
+</html>

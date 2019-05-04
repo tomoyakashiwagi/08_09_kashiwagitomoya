@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myMemoPad</title>
+    <link rel="stylesheet" href="css/sample.css">
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>~EAZYMEMO~</h1>
+    </header>
+
+    <main>
+        <div class="text_area">
+
+            <div class="textall01">
+                <div class="text_area01">
+                    <ul1>
+                        <li id="save1">Save</li>
+                        <li id="clear1">Clear</li>
+                    </ul1>
+                    <input type="text" id="input1">
+                    <textarea id="text_area1"></textarea>
+                </div>
+                <div class="text_area02">
+                    <ul1>
+                        <li id="save2">Save</li>
+                        <li id="clear2">Clear</li>
+                    </ul1>
+                    <input type="text" id="input2">
+                    <textarea id="text_area2"></textarea>
+
+                </div>
+            </div>
+            <div class="textall02">
+                <div class="text_area03">
+                    <ul1>
+                        <li id="save3">Save</li>
+                        <li id="clear3">Clear</li>
+                    </ul1>
+                    <input type="text" id="input3">
+                    <textarea id="text_area3"></textarea>
+
+                </div>
+                <div class="text_area04">
+                    <ul1>
+                        <li id="save4">Save</li>
+                        <li id="clear4">Clear</li>
+                    </ul1>
+                    <input type="text" id="input4">
+                    <textarea id="text_area4"></textarea>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div id="allclear">ALL CLEAR</div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //------------------<メモ１>------------------
+            //1.Save クリックイベント
+            $('#save1').on('click', function () {
+                var title = $('#input1').val();
+                var text = $('#text_area1').val();
+                var object = {
+                    "title1": title,
+                    "text1": text
+                };
+                var json_obj = JSON.stringify(object);
+                localStorage.setItem('memo1', json_obj);
+            });
+
+
+            //2.clear クリックイベント
+            $('#clear1').on('click', function () {
+                localStorage.removeItem('memo1');
+                $('#input1').val('');
+                $('#text_area1').val('');
+            });
+
+
+            //3.ページ読み込み：保存データ取得表示
+            if (localStorage.getItem('memo1')) {
+                var obj = localStorage.getItem('memo1');
+                var p_obj = JSON.parse(obj);
+                $('#input1').val(p_obj.title);
+                $('#text_area1').val(p_obj.text);
+
+            };
+            //------------------<メモ２>------------------
+            //1.Save クリックイベント
+            $('#save2').on('click', function () {
+                var title = $('#input2').val();
+                var text = $('#text_area2').val();
+                var object = {
+                    "title2": title,
+                    "text2": text
+                };
+                var json_obj = JSON.stringify(object);
+                localStorage.setItem('memo2', json_obj);
+            });
+
+
+            //2.clear クリックイベント
+            $('#clear2').on('click', function () {
+                localStorage.removeItem('memo2');
+                $('#input2').val('');
+                $('#text_area2').val('');
+            });
+
+
+            //3.ページ読み込み：保存データ取得表示
+            if (localStorage.getItem('memo2')) {
+                var obj = localStorage.getItem('memo2');
+                var p_obj = JSON.parse(obj);
+                $('#input2').val(p_obj.title);
+                $('#text_area2').val(p_obj.text);
+            };
+            //------------------<メモ３>------------------
+            //1.Save クリックイベント
+            $('#save3').on('click', function () {
+                var title = $('#input3').val();
+                var text = $('#text_area3').val();
+                var object = {
+                    "title3": title,
+                    "text3": text
+                };
+                var json_obj = JSON.stringify(object);
+                localStorage.setItem('memo3', json_obj);
+            });
+
+            //2.clear クリックイベント
+            $('#clear3').on('click', function () {
+                localStorage.removeItem('memo3');
+                $('#input3').val('');
+                $('#text_area3').val('');
+            });
+
+
+            //3.ページ読み込み：保存データ取得表示
+            if (localStorage.getItem('memo3')) {
+                var obj = localStorage.getItem('memo3');
+                var p_obj = JSON.parse(obj);
+                $('#input3').val(p_obj.title);
+                $('#text_area3').val(p_obj.text);
+
+            };
+            //------------------<メモ４>------------------
+            //1.Save クリックイベント
+            $('#save4').on('click', function () {
+                var title = $('#input4').val();
+                var text = $('#text_area4').val();
+                var object = {
+                    "title4": title,
+                    "text4": text
+                };
+                var json_obj = JSON.stringify(object);
+                localStorage.setItem('memo4', json_obj);
+            });
+
+            //2.clear クリックイベント
+            $('#clear4').on('click', function () {
+                localStorage.removeItem('memo4');
+                $('#input4').val('');
+                $('#text_area4').val('');
+            });
+
+
+            //3.ページ読み込み：保存データ取得表示
+            if (localStorage.getItem('memo4')) {
+                var obj = localStorage.getItem('memo4');
+                var p_obj = JSON.parse(obj);
+                $('#input4').val(p_obj.title);
+                $('#text_area4').val(p_obj.text);
+
+            };
+
+            //ALL CLEARセクション
+            $('#allclear').on('click', function () {
+                localStorage.clear();
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

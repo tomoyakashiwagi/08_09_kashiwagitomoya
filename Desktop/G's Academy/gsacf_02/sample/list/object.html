@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>オブジェクトの練習</title>
+</head>
+
+<body>
+    <h1>オブジェクトの練習</h1>
+    <button id="btn">表示</button>
+    <div id="echo"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //オブジェクトの作成
+            const object01 = {
+                date: "2018/12/22",
+                youbi: "土",
+                event: "第2回授業"
+            };
+            const object02 = {
+                sei: "カシワギ",
+                mei: "トモヤ",
+                nenrei: "30",
+            }
+            // 内容を表示してみよう
+            console.log(object01);
+            console.log(object02);
+
+
+            // ボタンクリック時にブラウザ上に表示しよう
+            $('#btn').on('click', function () {
+                var arr = [];
+                arr.push('<p>今日は' + object01.date + 'です。</p>');
+                arr.push('<p>曜日は' + object01.youbi + '曜日です。</p>');
+                arr.push('<p>今日のイベントは' + object01.event + 'です。</p>');
+                $('#echo').html(arr);
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>

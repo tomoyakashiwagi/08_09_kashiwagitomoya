@@ -1,0 +1,173 @@
+<DOCTYPE html>
+    <html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="hakkason.css">
+        <title>スピードジャンケン</title>
+    </head>
+
+    <body>
+        <header>
+            <h2>SPEED JANKEN</h2>
+        </header>
+
+        <main>
+            <div class="com_card">
+                <div class="combtn">
+                    <div id="com_field0"></div>
+                    <div id="com_field1"></div>
+                    <div id="com_field2"></div>
+                    <!-- <img src="../hakkason/img/BK_gu.png" id="com_field1" alt=”グーの画像です”>
+                        <img src="../hakkason/img/BK_cho.png" id="com_field2" alt=”チョキの画像です”>
+                        <img src="../hakkason/img/BK_pa.png" id="com_field3" alt=”パーの画像です”> -->
+                </div>
+                <img src="../hakkason/img/com_card.png">
+            </div>
+
+            <div class="bacard">
+                <div id="start_btn" class="s-btn">START</div>
+                <div id="c_field"></div>
+                <!-- <img src="../hakkason/img/card.png" id="c_field"> -->
+                <div id="result">経過秒数:</div>
+            </div>
+            <div class="my_card">
+                <img src="../hakkason/img/card.png">
+                <div class=" btn">
+                    <div id="my_field0"></div>
+                    <div id="my_field1"></div>
+                    <div id="my_field2"></div>
+                    <!-- <img src="../hakkason/img/RD_gu.png" id="my_field1" alt=”グーの画像です”>
+                            <img src="../hakkason/img/RD_cho.png" id="my_field2" alt=”チョキの画像です”>
+                            <img src="../hakkason/img/RD_pa.png" id="my_field3" alt=”パーの画像です”> -->
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--
+            <script src='hakkason.js'></script>
+        -->
+        <script>
+            // 秒数表示
+            function showSecond() {
+                var nowTime = new Date();
+                var elapsedTime = Math.floor((nowTime - startTime) / 1000);
+                var str = '経過秒数: ' + elapsedTime + '秒';
+                var re = document.getElementById('result');
+                re.innerHTML = str;
+            };
+            var startTime;
+            const goo = 0;
+            const choki = 1;
+            const par = 2;
+
+            $(function () {
+                const my_hand_img = ['<img src="../hakkason/img/RD_gu.png" alt=”グーの画像です”>', '<img src="../hakkason/img/RD_cho.png" alt=”チョキの画像です”>', '<img src="../hakkason/img/RD_pa.png" alt=”パーの画像です”>'];
+                const com_hand_img = ['<img src="../hakkason/img/BK_gu.png" alt=”グーの画像です”>', '<img src="../hakkason/img/BK_cho.png" alt=”チョキの画像です”>', '<img src="../hakkason/img/BK_pa.png" alt=”パーの画像です”>'];
+
+                //スタートボタンを押したら、全フィールドに札の画像をランダムに配置                  
+                $("#start_btn").on("click", function () {
+                    // 開始時間
+                    startTime = new Date();
+                    setInterval(showSecond, 1000);
+
+                    var rand_m0 = Math.floor(Math.random() * 3);
+                    $("#my_field0").html(my_hand_img[rand_m0]);
+                    var rand_m1 = Math.floor(Math.random() * 3);
+                    $("#my_field1").html(my_hand_img[rand_m1]);
+                    var rand_m2 = Math.floor(Math.random() * 3);
+                    $("#my_field2").html(my_hand_img[rand_m2]);
+
+                    var rand_c0 = Math.floor(Math.random() * 3);
+                    $("#com_field0").html(com_hand_img[rand_c0]);
+                    var rand_c1 = Math.floor(Math.random() * 3);
+                    $("#com_field1").html(com_hand_img[rand_c1]);
+                    var rand_c2 = Math.floor(Math.random() * 3);
+                    $("#com_field2").html(com_hand_img[rand_c2]);
+
+                    var rand_center = Math.floor(Math.random() * 3);
+                    $("#c_field").html(com_hand_img[rand_center]);
+
+                    // let rand = Math.floor(Math.random() * 3);
+                    // $("#my_field1").html(hand_img[rand]);
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#my_field2").html(hand_img[rand]);
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#my_field3").html(hand_img[rand]);
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#com_field1").html(hand_img[rand]);
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#com_field2").html(hand_img[rand]);
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#com_field3").html(hand_img[rand]);
+
+                    // rand = Math.floor(Math.random() * 3);
+                    // $("#c_field").html(hand_img[rand]);
+
+
+                    //field1の処理
+                    $("#my_field0").on("click", function () {
+                        judege(rand_m0);
+                    });
+
+                    //field2の処理
+                    $("#my_field1").on("click", function () {
+                        judege(rand_m1);
+                    });
+
+                    //field3の処理
+                    $("#my_field2").on("click", function () {
+                        judege(rand_m2);
+                    });
+
+                    function judege(player) {
+                        if (player == goo && rand_center == goo) {
+                            $("#c_field").html(com_hand_img[goo]);
+                            rand_center = goo;
+                        }
+                        else if (player == goo && rand_center == choki) {
+                            $("#c_field").html(my_hand_img[goo]);
+                            rand_center = goo;
+                        }
+                        else if (player == goo && rand_center == par) {
+                            $("#c_field").html(com_hand_img[par]);
+                            rand_center = par;
+                        }
+
+                        else if (player == choki && rand_center == goo) {
+                            $("#c_field").html(com_hand_img[goo]);
+                            rand_center = goo;
+                        }
+                        else if (player == choki && rand_center == choki) {
+                            $("#c_field").html(com_hand_img[choki]);
+                            rand_center = choki;
+                        }
+                        else if (player == choki && rand_center == par) {
+                            $("#c_field").html(my_hand_img[choki]);
+                            rand_center = choki;
+                        }
+
+                        else if (player == par && rand_center == goo) {
+                            $("#c_field").html(my_hand_img[par]);
+                            rand_center = par;
+                        }
+                        else if (player == par && rand_center == choki) {
+                            $("#c_field").html(com_hand_img[choki]);
+                            rand_center = choki;
+                        }
+                        else if (player == par && rand_center == par) {
+                            $("#c_field").html(com_hand_img[par]);
+                            rand_center = par;
+                        }
+                    }
+
+                });
+            });
+
+        </script>
+    </body>
+
+    </html>

@@ -1,0 +1,152 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+    background-size:cover;
+    background-image:url(img/speedjanken-back1.jpg);
+}
+header{
+    /* border-bottom: 1px solid #ccc; */
+    text-align: center;
+}
+
+h2 {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    background-color: #fff;
+    text-align: center;
+}
+/* 山札 */
+#comyama_field{
+    width: 188px;
+    height: 252px;
+    margin-left: 50px;
+}
+.combtn {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.my_card {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.com_card {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* #com_field0 {
+    width: 188px;
+    height: 252px;
+}
+
+
+#com_field1 {
+    width: 188px;
+    height: 252px;
+}
+
+
+#com_field2 {
+    width: 188px;
+    height: 252px;
+} */
+
+/* ---------中央カード----------- */
+.bacard{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#card {
+    width: 188px;
+    height: 252px;
+}
+/* --------------------------------- */
+
+.btn {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+img {
+    width: 213px;
+    height: 284px;
+}
+
+/* #my_field0 {
+    width: 188px;
+    height: 252px;
+} */
+
+/* #my_field0:hover{
+    width: 213px;
+    height: 284px;
+} */
+
+/* #my_field1 {
+    width: 188px;
+    height: 252px;
+}
+ */
+/* #my_field1:hover{
+    width: 213px;
+    height: 284px;
+} */
+
+/* #my_field2 {
+    width: 188px;
+    height: 252px;
+} */
+
+/* #my_field2:hover{
+    width: 213px;
+    height: 284px;
+}
+
+#c_field {
+    width: 213px;
+    height: 284px;
+} */
+
+.s-btn {
+  font-size:18px;
+  display: inline-block;
+  text-decoration: none;
+  background: #ff8181;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #bd6565;
+  transition: .4s;
+}
+
+.s-btn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
+
+.start{
+    float: right;
+}

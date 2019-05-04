@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sample.css">
+    <title>Chatアプリ</title>
+</head>
+
+<body>
+
+    <!-- 入力&出力場所を作成しよう -->
+    <div class="panel-default">
+        <div class="panel-heading">
+            <p>チャットルーム</p>
+        </div>
+        <div id="scroller" class="panel-body">
+            <ul id='output'></ul>
+        </div>
+
+        <div class="panel-footer">
+            <input type="text" class="form-control" id="nameInput" placeholder="ユーザー名">
+        </div>
+
+        <div class="panel-footer">
+            <textarea id="textInput" class="form-control" placeholder="本文を入力"></textarea>
+            <button id="send">送信</button>
+        </div>
+
+    </div>
+</body>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- 以下にfirebaseのコードを貼り付けよう -->
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA8dkemwijzHyp3Xhh9FSAMptvL3pWtJpk",
+        authDomain: "chatapp-6e7ca.firebaseapp.com",
+        databaseURL: "https://chatapp-6e7ca.firebaseio.com",
+        projectId: "chatapp-6e7ca",
+        storageBucket: "chatapp-6e7ca.appspot.com",
+        messagingSenderId: "640296585728"
+    };
+    firebase.initializeApp(config);
+
+
+
+    var newPostRef = firebase.database().ref();
+
+    // 日時を取得する関数
+    function ymd() {
+        var date = new Date();
+        return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+    }
+
+    // 送信ボタンクリックでメッセージ送信
+    $('#send').on('click', function () {
+        newPostRef.push({
+            name: $('#nameInput').val(),
+            time: ymd(),
+            text: $('#textInput').val()
+
+        });
+        $('#textInput').val('')
+    });
+
+    //メッセージが追加されたら自動的に表示
+    newPostRef.on('child_added', function (data) {
+        var k = data.key;
+        var v = data.val();
+
+        var str = '';
+        str += '<div id="' + k + '">';
+        str += '<p>' + v.name + '</p>';
+        str += '<p>' + v.time + '</p>';
+        str += '<p>' + v.text + '</p>';
+        str += '</div>';
+        $('#output').append(str);
+
+    });
+
+    $('#textInput').on('keydown', function (e) {
+        if (e.keyCode == 13) {
+
+            newPostRef.push({
+                name: $('#nameInput').val(),
+                time: ymd(),
+                text: $('#textInput').val()
+            });
+
+            $('#textInput').val('')
+
+
+        }
+    });
+
+
+</script>
+
+
+</html>
+<!-- if (v.name == name.val()) {
+
+var messageElement = $("<li>
+    <p class='sender_name me'>" + name + "</p>
+    <p class='right_balloon'>" + text + "</p>
+    <p class='clear_balloon'></p>
+</li>");
+
+} else {
+
+var messageElement = $("<li>
+    <p class='sender_name'>" + name + "</p>
+    <p class='left_balloon'>" + text + "</p>
+    <p class='clear_balloon'></p>
+</li>");
+
+}
+//HTMLに取得したデータを追加する
+messageList.append(messageElement);
+
+//一番下にスクロールする
+messageList[0].scrollTop = messageList[0].scrollHeight; -->

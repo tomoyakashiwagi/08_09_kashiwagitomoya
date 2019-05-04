@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="canvas.css">
+    <title>ペイントツール</title>
+</head>
+
+<body>
+    <section>
+        <h1>ペイントツール</h1>
+        <div>
+            <!-- 線の太さを変更するHTML要素 (step=何段階にするか？)-->
+            <input id="bold" type="range" name="太さ" value="5" min="1" max="20" step="1">
+            <!-- 線の透明度を変更するHTNL要素(step=min0~max1の間で指定) -->
+            <input id="alpha" type="range" name="透明度" value="1" min="0" max="1" step="0.1">
+            <!-- 線の色を変更するHTML要素 -->
+            <input id="color" type="color" name="色" value="#000000">
+            <!--ペン-->
+            <button id="pen">ペン</button>
+            <!--消しゴム-->
+            <button id="erase">消しゴム</button>
+            <!-- 戻るボタン(難しい！) -->
+            <button id="back">1つ戻る</button>
+            <!--進むボタン-->
+            <button id="forwardbtn">一つ進む</button>
+            <!-- クリアボタン -->
+            <button id="clear_btn">クリア</button>
+
+            <!--保存-->
+            <button id="save" type="button" onclick="chgImg()" value="1">保存</button>
+            <!--ファイルアップロード-->
+            <div class="upload"><input type="file" name="file" id="file"></div>
+            <div id="result"></div>
+
+
+            <!-- <div class="area"> -->
+
+            <canvas id="drowarea" width="800" height="400" style="border:1px solid blue;"></canvas>
+
+            <!-- <div id="newImg"> -->
+            <img id="newImgarea" width="400px" height="200px" style="border:1px solid blue;">
+            <!-- </div> -->
+            <!-- </div> -->
+
+        </div>
+        <!-- <canvas id="cvs1" width="500" height="500"></canvas>
+        <input type="button" id="btn1" value="ボタン" onclick="imageDraw();"> -->
+    </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script>
+        //初期化
+        var draw = false;             //スイッチ：true=線を引く, false=線は引かない
+        var txy = 0;                    //描画位置の調整，iPadなどは15＋すると良いかも
+        var oldX = 0;                   //１つ前の座標を代入するための変数
+        var oldY = 0;                   //１つ前の座標を代入するための変数
+        var bold_line = 3;              //ラインの太さ
+        var color = '#000';             //ラインの色
+        var alpha = 1;                //ラインの透明度
+
+        // キャンバスの準備
+        var can = $('#drowarea')[0];        //CanvasElement
+        var context = can.getContext('2d'); //描画するための準備！
+        // canvas.width = canvasWidth;
+        // canvas.height = canvasHeight;
+
+        // 一つ戻る処理
+        var imageMemory = new Array(5); // キャンバスのイメージの保存用配列
+        var flagMemory = 0; //現在のキャンバスの番号
+
+        //-------ファイルアップロード--------------------------------------------------
+        var file = document.getElementById('file');
+        var result = document.getElementById('canvas');
+        var canvasWidth = 800;
+        var canvasHeight = 400;
+        var uploadImgSrc;
+
+
+
+
+        //画像オブジェクトを生成（画像挿入）
+        // var img = new Image();
+        // img.src = "IMG_8248.jpg";
+
+
+
+        //0の基準を設ける処理
+        imageMemory[0] = context.getImageData(0, 0, 800, 400);
+
+        // $(function () {
+        //     img.src = new Image();
+        //     img.onload = function () {
+        //         context.drawImage(img, 0, 0, 800, 400);
+        //     };
+        // });
+
+
+        $('#back , #forwardbtn').attr('disabled', true);
+        //現在のキャンバス状態を保存
+        function saveImageData() {
+            // console.log(imageMemory);
+            if (flagMemory == imageMemory.length - 1) {
+                imageMemory.shift();
+            } else {
+                ++flagMemory;
+            }
+            if (flagMemory == imageMemory.length - 1) {
+                $('#forwardbtn').attr('disabled', true);
+            }
+            // imageMemory[flagMemory] = context.getImageData(0, 0, drowarea.width, drowarea.height);
+            // imageMemory[flagMemory] = context.getImageData(0, 0, can.width, can.height);
+            imageMemory[flagMemory] = context.getImageData(0, 0, 800, 400);
+            $('#back').attr('disabled', false);
+        };
+
+        //newimgデータの保存場所
+
+
+
+        //MouseDownイベント：フラグをTrue(クリック状態のときだけ線を書きたいため)
+        $(can).on('mousedown', function (e) {
+            console.log(e);
+            // 座標を取得して描画状態にする処理を記述
+            oldX = e.offsetX;
+            oldY = e.offsetY - txy;
+            draw = true;
+        });
+
+        //MouseMove：動かしてラインを引く処理
+        $(can).on('mousemove', function (e) {
+            // console.log(e);
+            //  【注意】mousedownはクリックしていてもいなくても発火するので条件分岐する必要あり！
+            if (draw == true) {
+                context.strokeStyle = color;    //色
+                context.lineWidth = bold_line;  //太さ
+                context.globalAlpha = alpha;    //透明度
+                context.lineJoin = 'round';     //線の接続部
+                context.lineCap = 'round';      //線の端の形
+
+                // 線を引く処理を記述
+                context.beginPath();
+                context.moveTo(oldX, oldY);
+                context.lineTo(e.offsetX, e.offsetY - txy);
+                context.stroke();
+
+                // 一つ前の座標に現在の座標を保存する処理を記述
+                oldX = e.offsetX;
+                oldY = e.offsetY - txy;
+
+            }
+        });
+
+
+
+        //MouseUpフラグをfalse
+        $(can).on('mouseup', function (e) {
+            // 描かなくする処理
+            draw = false;
+            saveImageData();
+        });
+
+        //カーソルがキャンバスから外れると描画を中止する処理(mouseout,mouseoverでも可)
+        $(can).on('mouseleave', function (e) {
+            // 描かなくする処理
+            draw = false;
+        });
+
+        //線の太さスケール(線の太さを変更する処理)
+        $('#bold').on('change', function (e) {
+            console.log('太さ変更！');
+            // 太さを設定する処理
+            bold_line = $('#bold').val();
+            console.log(bold);
+        });
+
+        //透明度スケール(線の透明度を変更する処理)
+        $('#alpha').on('change', function (e) {
+            console.log('透明度を変更！');
+            // 透明度を設定する処理
+            alpha = $('#alpha').val();
+            console.log(alpha);
+        });
+
+        //カラーボタン(線の色を変更する処理)
+        $('#color').on('change', function (e) {
+            // console.log('色変更！');
+            // 色を設定する処理
+            color = $('#color').val();
+            console.log(color);
+
+        });
+
+        //ペン(線を書く状態にする処理，デフォルトでは線を書く状態)
+        $('#pen').on('click', function (e) {
+            console.log('ペンモードです！');
+            // ペンの状態にする処理
+            context.globalCompositeOperation = 'source-over';
+        });
+
+        //消しゴム(書いた線を消去する状態にする処理)
+        $('#erase').on('click', function (e) {
+            console.log('消しゴムモードです！');
+            // 消しゴムの状態にする処理
+            // color = '#fff';
+            context.globalCompositeOperation = 'destination-out';
+
+        });
+
+        // 戻るボタン(高難度！！ここ以外でもいろいろな処理が必要です！！)
+        $('#back').on('click', function () {
+            // console.log('一つ戻る');
+            if (flagMemory > 0) {
+                flagMemory--;
+                context.putImageData(imageMemory[flagMemory], 0, 0);
+                $('#forwardbtn').attr('disabled', false);
+                if (flagMemory == 0) {
+                    $('#back').attr('disabled', true);
+                }
+            }
+        });
+
+        //進むボタン
+        $('#forwardbtn').on('click', function () {
+            if (flagMemory < imageMemory.length - 1) {
+                flagMemory++;
+                context.putImageData(imageMemory[flagMemory], 0, 0);
+                $('#back').attr('disabled', false);
+                if (flagMemory == imageMemory.length - 1) {
+                    $('#forwardbtn').attr('disabled', true);
+                }
+            }
+        });
+
+        //クリアボタン(キャンバスの内容を消去)
+        $('#clear_btn').on('click', function (e) {
+            console.log('クリア！');
+            context.beginPath();
+            // 消去する処理を記述
+            context.clearRect(0, 0, 800, 400);
+
+        });
+
+        //画像挿入
+        // img.onload = function () {
+        //     context.drawImage(img, 0, 0, 500, 500);  //400x300に縮小表示
+        // }
+
+        //イメージ保存
+        function chgImg() {
+            var png = can.toDataURL();
+            document.getElementById("newImgarea").src = png;
+
+        };
+
+        chgImg();
+
+        //localStorage保存
+        // $('#save').on('click', function (e) {
+        //     var text = $('#drowarea').val();
+        //     localStorage.setItem('canvasdata', text);
+        // });
+
+
+        //---------------------ファイルアップロード-------------------------------------------
+        //ファイルが指定された時にloadLocalImage()を実行 
+
+        function loadLocalImage(e) {
+            console.log(e);
+            // ファイル情報を取得
+            var fileData = e.target.files[0];
+
+            // 画像ファイル以外は処理を止める
+            if (!fileData.type.match('image.*')) {
+                alert('画像を選択してください');
+                return;
+            };
+            // fileReaderオブジェクトを使ってファイルを読み込み
+            var reader = new FileReader();
+
+
+            // ファイル読み込みに成功したときの処理
+            reader.onload = function () {
+                // Canvas上に表示する
+                uploadImgSrc = reader.result;
+                canvasDraw();
+            }
+
+
+            // ファイル読み込みに成功した時の処理
+            reader.onload = function () {
+                uploadImgSrc = reader.result;
+                canvasDraw();
+                var img = document.createElement('img');
+                img.src = reader.result;
+                // result.appendChild(img);
+
+            };
+            // ファイル読み込みを実行
+            reader.readAsDataURL(fileData);
+        };
+
+        file.addEventListener('change', loadLocalImage, false);
+
+        function canvasDraw() {
+            // canvas内の要素をクリアする
+            // ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+            // Canvas上に画像を表示
+            var img = new Image();
+            img.src = uploadImgSrc;
+            img.onload = function () {
+                context.drawImage(img, 0, 0, canvasWidth, this.height * (canvasWidth / this.width));
+            };
+
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>triangle</title>
+</head>
+
+<body>
+    <h1>triangle</h1>
+    <canvas id="canvas" width="500" height="300" style="border:1px solid blue;"></canvas>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var can = $('#canvas')[0];
+        var context = can.getContext('2d');
+        context.strokeStyle = '#f00'; //色を指定
+        context.lineWidth = 10;//線の太さ
+        context.lineCap = 'square'; //線の端の形状，round=丸い,square=四角い,butt=ラインキャップなし
+
+        context.beginPath();
+        context.moveTo(200, 100);
+        context.lineTo(100, 200);
+        context.lineTo(300, 200);
+        // context.lineTo();
+        context.closePath();
+        context.fillText("HELLO", 200, 150);//入れる文字と、座標
+        context.stroke();
+
+    </script>
+</body>
+
+</html>

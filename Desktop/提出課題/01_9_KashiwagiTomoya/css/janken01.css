@@ -1,0 +1,122 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+    background-color:#b1cfb1;
+    background-image: url(../jyukai.jpg);
+    background-position:center;
+    background-size:cover;
+    
+
+}
+
+header{
+    background-image: url(../janken_back.jpg);
+    background-position:center;
+    width: 1398px;
+    height: 530px;
+    background-size:cover;
+
+}
+
+.title{
+    margin-left:343px;
+    padding-top: 28px;
+}
+
+main{
+    border-bottom:1px solid #ccc;
+    text-align: center;
+    font-size: 38px;
+}
+.computer {
+    margin:0px;
+
+}
+.judg h2{
+    margin:auto;
+    width: 450px;
+    background-color: rgba(36, 138, 79, 0.5);
+}
+
+.count{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.countw{
+    padding:50px;
+}
+.countl{
+    padding:50px;
+}
+.count h2{
+    margin: 0px;
+}
+
+
+footer{
+    background-color: #fff;
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    height:200px;
+}
+ul{
+    padding: 0;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+}
+li{
+    text-align: center;
+    list-style-type:none;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover{
+    background:rgba(35, 92, 52, 0.329);
+    color:#ef8f6e;
+}
+
+
+.pchand_gu{
+    background-image:  url(../guu01.png);
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+.pchand_choki{
+    background-image:  url(../choki01.png);
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+.pchand_pa{
+    background-image:  url(../pa01.png);
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+#con_btn{
+    display: none;
+    width:300px;
+    height:60px;
+    font-size:40px;
+    background-color: rgba(27, 117, 80, 0.39);
+
+}
+.count h2{
+    background-color: rgba(34, 116, 163, 0.39);
+}
+#win {
+    background-color: rgba(117, 27, 47, 0.39);
+}
+#lose{
+    background-color: rgba(117, 27, 47, 0.39);
+}

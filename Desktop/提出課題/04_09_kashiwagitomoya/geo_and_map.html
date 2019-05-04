@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>太郎先生マップ</title>
+
+    <style>
+        html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        background: #333;
+    }
+
+    h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 50%;
+        color: white;
+    }
+
+    p {
+        margin: 0
+    }
+
+    button {
+        width: 60px;
+        height: 60px;
+        background-color: #0B6125;
+        color: white;
+    }
+
+    #inputForm {
+        position: absolute;
+        top: 200px;
+        left: 250px;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #000;
+        border-radius: 10px;
+    }
+</style>
+
+</head>
+
+<body>
+    <div id='searchBoxContainer'>
+        <input type='text' id='searchBox'><button id="clear">Clear</button>
+    </div>
+    <div id="myMap" style='position:relative;width:100%;height:91%;'></div>
+    <div id="myMap" style="width:100%;height:98%;"></div>
+    <div id="inputForm" style="display:none;">
+        <table>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td>場所</td>
+                <td><input id="titleTbx" type="text" /></td>
+            </tr>
+            <tr>
+                <td>コメント</td>
+                <td><input id="descriptionTbx" type="text" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="Save" onclick="saveData()" style="float:right;" /></td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AoJckcQr1LcmxPeiVbTLdpnS4g-tr_PHvIQsONFwjl_AjjuDGVQuwJbZHh5AwAgZ'
+        async defer></script>
+    <script src='test.js'></script>
+    <script>
+
+    </script>
+
+</body>
+
+</html>
